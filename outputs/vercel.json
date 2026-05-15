@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "public": true,
+  "env": [],
+  "builds": [
+    {
+      "src": "onboarding_smiller_cx_editable.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "onboarding_smiller_cx_editable.html"
+    }
+  ]
+}

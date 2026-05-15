@@ -1,0 +1,107 @@
+═══════════════════════════════════════════════════════════════════════════════
+🚀 DEPLOY NO VERCEL - PASSO A PASSO (5 MINUTOS)
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 ARQUIVOS QUE VOCÊ VAI USAR:
+✓ onboarding_smiller_cx_editable.html (seu documento com admin)
+✓ vercel.json (configuração - já pronto)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⏱️ PASSO 1: CRIAR REPOSITÓRIO NO GITHUB (2 minutos)
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Abra: https://github.com/new
+
+2. Preencha:
+   - Repository name: smiller-onboarding
+   - Description: Onboarding CX Smiller
+   - Marque: Public
+   - Marque: Add a README file
+
+3. Clique: "Create repository"
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⏱️ PASSO 2: UPLOAD DOS ARQUIVOS (1 minuto)
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Na página do repositório, clique: "Add file" > "Upload files"
+
+2. Arraste ou selecione estes arquivos:
+   ✓ onboarding_smiller_cx_editable.html
+   ✓ vercel.json
+
+3. Clique: "Commit changes"
+
+4. Pronto! Os arquivos estão no GitHub.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⏱️ PASSO 3: DEPLOY NO VERCEL (2 minutos)
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Abra: https://vercel.com/dashboard
+
+2. Clique: "Add New..." > "Project"
+
+3. Clique: "Import Git Repository"
+
+4. Procure: "smiller-onboarding"
+
+5. Clique: "Import"
+
+6. NÃO precisa mudar nada nas configurações
+
+7. Clique: "Deploy"
+
+8. Aguarde (leva ~30 segundos)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PRONTO!
+═══════════════════════════════════════════════════════════════════════════════
+
+Após o deploy, você receberá um link como:
+
+   https://smiller-onboarding.vercel.app
+
+OU
+
+   https://seu-projeto-xxxxx.vercel.app
+
+
+COMPARTILHE ESSE LINK COM SEU TIME!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔐 CREDENCIAIS DE ACESSO
+═══════════════════════════════════════════════════════════════════════════════
+
+Clique no botão ⚙️ no canto inferior direito
+
+Senha de Admin: @Smiller123
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚡ FUNCIONALIDADES DISPONÍVEIS
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Fazer Backup: Baixa o arquivo HTML
+✓ Restaurar: Carrega um backup anterior
+✓ Resetar: Volta ao original
+
+As edições são salvas automaticamente!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💡 DICAS
+═══════════════════════════════════════════════════════════════════════════════
+
+• Para atualizar o site, faça push no GitHub e Vercel atualiza automaticamente
+• Para domínio customizado: Vá em "Settings" > "Domains" no Vercel
+• Você pode usar seu domínio (ex: onboarding.suaempresa.com)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Precisar de ajuda? Me manda mensagem!
