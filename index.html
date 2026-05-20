@@ -1866,13 +1866,20 @@
 
         <script>
             // Funções de navegação
-            function mostrarSecao(id) {
-                const secoes = document.querySelectorAll('main > section');
-                secoes.forEach(s => s.style.display = 'none');
-                document.getElementById(id).style.display = 'block';
-                window.scrollTo(0, 0);
-                atualizarNavegacao(id);
-            }
+function mostrarSecao(id) {
+                    const secoes = document.querySelectorAll('main > section');
+                    secoes.forEach(s => {
+                                            s.classList.remove('active');
+                                            s.style.display = 'none';
+                    });
+                    const secao = document.getElementById(id);
+                    if (secao) {
+                                            secao.classList.add('active');
+                                            secao.style.display = 'block';
+                    }
+                    window.scrollTo(0, 0);
+                    atualizarNavegacao(id);
+}
 
             function atualizarNavegacao(secaoAtiva) {
                 const botoesNav = document.querySelectorAll('.nav-btn');
