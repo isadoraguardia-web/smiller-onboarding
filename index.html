@@ -1930,4 +1930,51 @@
                 }
 
                 document.getElementById('resultado').innerHTML = mensagem;
-                document.getElementBy
+                document.getElementById('resultado').classList.remove('hidden');
+            }
+
+            function resetarQuiz() {
+                document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+                document.getElementById('resultado').classList.add('hidden');
+            }
+
+            // Checklist
+            function atualizarProgresso() {
+                const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+                const marcadas = document.querySelectorAll('.checklist input[type="checkbox"]:checked');
+                const percentual = Math.round((marcadas.length / checkboxes.length) * 100);
+
+                document.getElementById('progressBar').style.width = percentual + '%';
+                document.getElementById('progressText').textContent = percentual + '% concluído';
+
+                // Salvar no localStorage
+                const progresso = {};
+                checkboxes.forEach(cb => {
+                    progresso[cb.id] = cb.checked;
+                });
+                localStorage.setItem('progressoSmiller', JSON.stringify(progresso));
+            }
+
+            function carregarProgresso() {
+                const progresso = localStorage.getItem('progressoSmiller');
+                if (progresso) {
+                    const dados = JSON.parse(progresso);
+                    Object.keys(dados).forEach(id => {
+                        const cb = document.getElementById(id);
+                        if (cb) {
+                            cb.checked = dados[id];
+                        }
+                    });
+                    atualizarProgresso();
+                }
+            }
+
+            // Inicializar
+            document.addEventListener('DOMContentLoaded', () => {
+                carregarProgresso();
+                mostrarSecao('inicio');
+            });
+        </script>
+    </main>
+</body>
+</html>
