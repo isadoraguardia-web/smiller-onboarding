@@ -501,7 +501,7 @@
         };
 
         let contentData = {};
-
+h
         // Login
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -517,17 +517,39 @@
             }
         });
 
-        function loadAndRenderEditor() {
-            // Initialize contentData with empty values
+async function loadAndRenderEditor() {
             Object.keys(TABS_CONFIG).forEach(tabId => {
-                contentData[tabId] = {};
-                TABS_CONFIG[tabId].fields.forEach(field => {
-                    contentData[tabId][field.name] = '';
-                });
+                            contentData[tabId] = {};
+                            TABS_CONFIG[tabId].fields.forEach(field => {
+                                                contentData[tabId][field.name] = '';
+                            });
             });
-
+            try {
+                            const response = await fetch('/api/loadContent');
+                            if (response.ok) {
+                                                const existingContent = await response.json();
+                                                Object.keys(existingContent).forEach(tabId => {
+                                                                        if (contentData[tabId]) {
+                                                                                                    Object.keys(existingContent[tabId]).forEach(fieldName => {
+                                                                                                                                    let value = existingContent[tabId][fieldName];
+                                                                                                                                    if (typeof value === 'object') {
+                                                                                                                                                                        if (Array.isArray(value)) {
+                                                                                                                                                                                                                contentData[tabId][fieldName] = value.join('\n');
+                                                                                                                                                                        } else {
+                                                                                                                                                                                                                contentData[tabId][fieldName] = JSON.stringify(value);
+                                                                                                                                                                                                            }
+                                                                                                                                        } else {
+                                                                                                                                                                        contentData[tabId][fieldName] = value || '';
+                                                                                                                                        }
+                                                                                                        });
+                                                                        }
+                                                });
+                            }
+            } catch (error) {
+                            console.log('Note: Could not load existing content, starting fresh');
+            }
             renderTabs();
-        }
+}
 
         function renderTabs() {
             const tabButtons = document.getElementById('tabButtons');
