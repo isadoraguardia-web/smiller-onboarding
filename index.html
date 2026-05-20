@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding Smiller - Customer Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #46a0bf;
+            --light-blue: #8fcad8;
+            --accent-blue: #70a0c9;
+            --dark-gray: #2c3e50;
+            --light-gray: #ecf0f1;
+            --white: #ffffff;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --text-color: #2c3e50;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            color: white;
+            padding: 40px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            color: var(--text-color);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        nav button:hover {
+            background-color: var(--light-gray);
+            color: var(--primary-blue);
+        }
+
+        nav button.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        /* Sections */
+        section {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .value-card h4 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .value-card p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+
+        /* Process Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 29px;
+            top: 40px;
+            width: 2px;
+            height: 50px;
+            background: var(--light-blue);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content h4 {
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .question {
+            margin-bottom: 30px;
+        }
+
+        .question h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 2px solid var(--light-gray);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background-color: #f9f9f9;
+        }
+
+        .option input {
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: var(--primary-blue);
+        }
+
+        .option.correct {
+            background-color: #d4edda;
+            border-color: var(--success);
+        }
+
+        .option.incorrect {
+            background-color: #f8d7da;
+            border-color: var(--danger);
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border-left: 4px solid var(--light-blue);
+        }
+
+        .checklist input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            cursor: pointer;
+            accent-color: var(--primary-blue);
+        }
+
+        .checklist li.completed {
+            background-color: #f0f8ff;
+            border-left-color: var(--success);
+        }
+
+        .checklist li.completed label {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        /* Buttons */
+        button.btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        button.btn:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(70, 160, 191, 0.3);
+        }
+
+        button.btn-secondary {
+            background: white;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        button.btn-secondary:hover {
+            background: var(--light-blue);
+            color: white;
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border-left: 4px solid;
+        }
+
+        .alert-info {
+            background-color: #d1ecf1;
+            border-left-color: var(--primary-blue);
+            color: #0c5460;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            border-left-color: var(--success);
+            color: #155724;
+        }
+
+        .alert-warning {
+            background-color: #fff3cd;
+            border-left-color: var(--warning);
+            color: #856404;
+        }
+
+        /* Tool Badge */
+        .tool-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--light-blue);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* Progress Bar */
+        .progress {
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            height: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-blue), var(--light-blue));
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav button {
+                padding: 12px 15px;
+                font-size: 0.85em;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                padding-left: 40px;
+            }
+
+            .timeline-item::before {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8em;
+            }
+
+            button.btn {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .result-message {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .result-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .result-message.failure {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚀 Bem-vindo à Smiller</h1>
+            <p>Guia Completo de Onboarding - Customer Experience</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="container">
+            <button class="nav-btn active" data-secao="inicio" onclick="mostrarSecao('inicio')">Início</button>
+            <button class="nav-btn" data-secao="empresa" onclick="mostrarSecao('empresa')">Sobre Smiller</button>
+            <button class="nav-btn" data-secao="processos" onclick="mostrarSecao('processos')">Processos</button>
+            <button class="nav-btn" data-secao="ferramentas" onclick="mostrarSecao('ferramentas')">Ferramentas</button>
+            <button class="nav-btn" data-secao="escalacao" onclick="mostrarSecao('escalacao')">Escalação</button>
+            <button class="nav-btn" data-secao="termometro" onclick="mostrarSecao('termometro')">Termometro Smiller</button>
+            <button class="nav-btn" data-secao="mensagens" onclick="mostrarSecao('mensagens')">Book de Mensagens</button>
+            <button class="nav-btn" data-secao="casos" onclick="mostrarSecao('casos')">Casos Reais</button>
+            <button class="nav-btn" data-secao="tutoriais" onclick="mostrarSecao('tutoriais')">Tutoriais</button>
+            <button class="nav-btn" data-secao="quiz" onclick="mostrarSecao('quiz')">Quiz</button>
+            <button class="nav-btn" data-secao="checklist" onclick="mostrarSecao('checklist')">Checklist</button>
+            <button class="nav-btn" data-secao="athena" onclick="mostrarSecao('athena')">Athena Saúde</button>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- SEÇÃO 1: INÍCIO -->
+        <section id="inicio" class="active">
+            <div class="card">
+                <h2>Bem-vindo ao Time de Customer Experience! 👋</h2>
+                <p style="margin-top: 15px; font-size: 1.1em;">Este é um documento vivo e modular que será seu guia durante o onboarding. Aqui você encontrará:</p>
+                <ul style="margin-top: 20px; margin-left: 20px; line-height: 2;">
+                    <li>✅ Sobre a empresa Smiller e nossa cultura</li>
+                    <li>✅ Plataforma Smiller (perspectiva do dentista)</li>
+                    <li>✅ Processos e fluxos de atendimento</li>
+                    <li>✅ Ferramentas Slack e Huggy</li>
+                    <li>✅ <strong>Decision Tree de Escalação</strong> (quando escalar para Caroline e Isadora)</li>
+                    <li>✅ Book de Mensagens Padrão com templates</li>
+                    <li>✅ Casos Reais e exemplos práticos</li>
+                    <li>✅ Quiz para validar aprendizado</li>
+                    <li>✅ Checklist de onboarding (semana 1 a 90 dias)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Seu Primeiro Dia</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Recepção & Setup</h4>
+                            <p>Boas-vindas do time, setup de computador, acesso a sistemas</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Apresentação Smiller</h4>
+                            <p>Conhecer o negócio, valores e estrutura da empresa</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Customer Operations</h4>
+                            <p>Entender a estrutura do time e suas responsabilidades</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Ferramentas Principais</h4>
+                            <p>Introdução ao Slack (interno) e Huggy (clientes)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica:</strong> Mantenha este documento aberto enquanto trabalha. Use o checklist ao final para acompanhar seu progresso.
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: SOBRE SMILLER -->
+        <section id="empresa">
+            <div class="card">
+                <h2>Sobre a Smiller 🦷</h2>
+                <p>Smiller é uma empresa de tecnologia na área de ortodontia, especializada em alinhadores e soluções de planejamento de casos dentários. Criamos ferramentas inovadoras para dentistas e pacientes.</p>
+
+                <h3 style="margin-top: 30px;">Nossos Valores Evoluídos</h3>
+                <p style="margin-bottom: 20px; color: #666;">Em maio de 2026, evoluímos nossa cultura com 5 pilares fundamentais:</p>
+
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h4>Vontade</h4>
+                        <p>Competitividade, método e controle. Sonhamos alto com disciplina.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Sinergia</h4>
+                        <p>Cada engrenagem funciona. Reconhecemos nossos melhores talentos.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Excelência</h4>
+                        <p>A melhor forma de empatia. Valorizar clientes e postura de empresa grande.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Dinamismo</h4>
+                        <p>Combater complexidade e burocracia sem perder inovação.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Disciplina</h4>
+                        <p>Serenidade, controle e consistência. Menos improviso, mais resultados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📊 Estrutura Organizacional - Customer Operations</h3>
+                <p>O time de Customer Experience faz parte da área de <strong>Customer Operations</strong>, que é o coração da interface entre Planning, Produção e Clientes.</p>
+
+                <div class="alert alert-info">
+                    <strong>🔑 Papel do CX:</strong> Você é a voz do cliente internamente. Você recebe demandas via Huggy, responde com excelência, e coordena com outros times quando necessário.
+                </div>
+
+                <h4 style="margin-top: 20px;">Responsabilidades Principais:</h4>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Responder dúvidas de clientes via Huggy</li>
+                    <li>Usar o Book de Mensagens Padrão para comunicação consistente</li>
+                    <li>Seguir os processos e nomenclatura corretamente</li>
+                    <li>Escalar casos complexos para o time apropriado</li>
+                    <li>Manter histórico de casos para análise</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🚀 Iniciativas Atuais</h3>
+                <div class="alert alert-warning">
+                    <strong>Smiller Tech:</strong> Foco em soluções de IA para novos produtos. Nova janela de oportunidade por desinformação em AI.
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: PLATAFORMA DENTISTA -->
+        <section id="plataforma">
+            <div class="card">
+                <h2>Plataforma Smiller - Perspectiva do Dentista 👨‍⚕️</h2>
+                <p>Para entender melhor nossos clientes, você precisa conhecer como os <strong>dentistas usam a plataforma Smiller</strong>. Isso te ajudará a responder dúvidas e resolver problemas com mais segurança.</p>
+
+                <div class="alert alert-info">
+                    <strong>💡 Por quê?</strong> Quando um dentista tem dúvida via Huggy, ele geralmente está tentando fazer algo na plataforma. Entender o fluxo dele ajuda você a guiá-lo melhor.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📚 Tutoriais Oficiais da Plataforma</h3>
+                <p>Assista esses vídeos para entender como a plataforma funciona:</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="background: white; border: 1px solid var(--light-gray); border-radius: 8px; overflow: hidden; transition: transform 0.3s ease;">
+                        <a href="https://app.smiller.com.br/tutorials" target="_blank" style="text-decoration: none; color: inherit;">
+                            <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%); color: white; padding: 20px; text-align: center;">
+                                <div style="font-size: 2em; margin-bottom: 10px;">🎬</div>
+                                <h4 style="color: white; margin: 0;">Todos os Tutoriais</h4>
+                            </div>
+                            <div style="padding: 15px;">
+                                <p style="margin: 0; color: #666;">Acesse a plataforma oficial para ver todos os 9 vídeos tutorial</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 30px;">📹 Vídeos Disponíveis:</h4>
+                <ul style="margin-left: 20px; line-height: 2.2;">
+                    <li><strong>Primeiro Acesso:</strong> Como acessar a plataforma pela primeira vez</li>
+                    <li><strong>Meus Pacientes:</strong> Como acessar seus pacientes</li>
+                    <li><strong>Enviar Documentos:</strong> Como realizar o envio de exames</li>
+                    <li><strong>Aprovar Planejamento:</strong> Como aprovar um caso de paciente</li>
+                    <li><strong>Consultar Prazo de Envio:</strong> Como consultar o prazo de entrega</li>
+                    <li><strong>Consultar Link de Rastreio:</strong> Como rastrear seu pedido</li>
+                    <li><strong>Solicitar Ajustes:</strong> Como solicitar ajustes no planejamento</li>
+                    <li><strong>Solicitar Refinamento:</strong> Como solicitar um refinamento</li>
+                    <li><strong>Solicitar Placas:</strong> Como solicitar novas placas</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🔄 Fluxo na Perspectiva do Dentista</h3>
+                <p>Quando um dentista usa a plataforma, ele segue este fluxo:</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>1️⃣ Primeiro Acesso</h4>
+                            <p>Faz login na plataforma e conhece a interface</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>2️⃣ Seleciona Paciente</h4>
+                            <p>Procura pelo paciente ou cria um novo registro</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>3️⃣ Envia Documentos</h4>
+                            <p>Anexa radiografia panorâmica e escaneamentos</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>4️⃣ Aguarda Planejamento</h4>
+                            <p>Smiller faz o planejamento (3 dias úteis)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>5️⃣ Revisa & Aprova</h4>
+                            <p>Dentista revisa o planejamento na plataforma e aprova</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>6️⃣ Solicita Placas</h4>
+                            <p>Dentista solicita fabricação das primeiras placas</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>7️⃣ Consulta Prazo</h4>
+                            <p>Dentista pode consultizar prazo de envio na plataforma</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>8️⃣ Rastreia Pedido</h4>
+                            <p>Quando sair, dentista consulta link de rastreio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>❓ Dúvidas Comuns de Dentistas na Plataforma</h3>
+
+                <h4 style="margin-top: 20px;">P: "Não consigo fazer login"</h4>
+                <p style="margin: 10px 0 15px 0;"><strong>R:</strong> Peça para revisar email e senha (diferenciam maiúsculas de minúsculas). Se ainda não funcionar, escale para o time de Tech no Slack.</p>
+
+                <h4 style="margin-top: 25px;">P: "Não encontro meu paciente no sistema"</h4>
+                <p style="margin: 10px 0 15px 0;"><strong>R:</strong> Verifique se o paciente já foi cadastrado anteriormente. Se não, ele pode criar um novo clicando em "Meus Pacientes" > "Novo Paciente".</p>
+
+                <h4 style="margin-top: 25px;">P: "Qual é o tamanho máximo do arquivo para enviar exames?"</h4>
+                <p style="margin: 10px 0 15px 0;"><strong>R:</strong> A plataforma aceita arquivos até 50MB. Se for maior, pode enviar em partes ou comprimir.</p>
+
+                <h4 style="margin-top: 25px;">P: "Posso solicitar múltiplas placas de uma vez?"</h4>
+                <p style="margin: 10px 0 15px 0;"><strong>R:</strong> Sim! Na aba "Meus Pacientes" > Caso > "Solicitar Placas", ele pode selecionar as placas desejadas e solicitar.</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: PROCESSOS -->
+        <section id="processos">
+            <div class="card">
+                <h2>Nomenclatura de Eventos 📋</h2>
+                <p>Todos os casos passam por estágios bem definidos. Você precisa conhecer esses eventos:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Evento</th>
+                            <th>Significado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ordem Gerada</strong></td>
+                            <td>Solicitação de fabricação/preparação</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pré Envio</strong></td>
+                            <td>Encaminhamento para aprovação</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ajuste</strong></td>
+                            <td>Solicitação de modificações</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Envio</strong></td>
+                            <td>Confirmação de envio/despacho</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>Prefixos de Case ID 🏷️</h2>
+                <p>Cada case tem um número que indica o tipo. Importante memorizar:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prefixo</th>
+                            <th>Significado</th>
+                            <th>Tempo Fabricação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1/8</strong></td>
+                            <td>Alinhadores</td>
+                            <td>7 dias úteis + frete</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5</strong></td>
+                            <td>Planejamento</td>
+                            <td>3 dias úteis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td>Contenção</td>
+                            <td>5 dias úteis + frete</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3</strong></td>
+                            <td>Clareamento</td>
+                            <td>5 dias úteis + frete</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4</strong></td>
+                            <td>Placa de Bruxismo</td>
+                            <td>7 dias úteis + frete</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6</strong></td>
+                            <td>Kit Smiller Plus</td>
+                            <td>10 dias úteis</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-info" style="margin-top: 20px;">
+                    <strong>📌 Importante:</strong> Quando um cliente questiona prazos, sempre consulte esta tabela para dar informação precisa.
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Problemas Comuns & Soluções</h2>
+
+                <h4 style="margin-top: 20px;">❌ Placas com Mau Encaixe</h4>
+                <ol style="margin: 15px 0 15px 20px; line-height: 1.8;">
+                    <li><strong>Coletar informações:</strong> Nome do paciente, número da placa, parte afetada (superior/inferior)</li>
+                    <li><strong>Pedir foto</strong> do mau encaixe para análise</li>
+                    <li><strong>Verificar histórico:</strong> A placa anterior tinha o mesmo problema?
+                        <ul style="margin-top: 10px;">
+                            <li>✓ <strong>Se sim:</strong> Indicar perda de tracking → Recomendar novo escaneamento</li>
+                            <li>✓ <strong>Se não:</strong> Defeito de fabricação → Reenviar, prazo 3 dias + envio</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4 style="margin-top: 30px;">❌ Placas Quebradas/Perdidas</h4>
+                <ol style="margin: 15px 0 15px 20px; line-height: 1.8;">
+                    <li><strong>Coletar informações</strong> (mesmas do acima)</li>
+                    <li><strong>Registrar tempo de uso:</strong> Quantos dias usou o alinhador?
+                        <ul style="margin-top: 10px;">
+                            <li>✓ <strong>Menos de 10 dias:</strong> Cobrar refabricação (R$ 35,90 por unidade)</li>
+                            <li>✓ <strong>10+ dias:</strong> Cliente pode usar próxima placa (avaliar contexto)</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="alert alert-warning" style="margin-top: 20px;">
+                    <strong>⚠️ Atenção:</strong> Alguns casos de quebra dentro de 15 dias podem ser reenviados sem custo. Analise cada caso individualmente e considere o contexto.
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Validade das Documentações ⏰</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Documentação</th>
+                            <th>Validade</th>
+                            <th>O que fazer quando vencer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Escaneamento</strong></td>
+                            <td>6 meses</td>
+                            <td>Solicitar novo escaneamento ao paciente</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Radiografia Panorâmica</strong></td>
+                            <td>12 meses</td>
+                            <td>Solicitar novo exame ao dentista</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>Conferência de Documentação 📄</h2>
+                <p>Quando receber um novo case, siga este checklist:</p>
+                <ol style="margin-left: 20px; line-height: 2;">
+                    <li>Pedir nome completo do paciente para o dentista</li>
+                    <li>Conferir se doutor preencheu o formulário</li>
+                    <li>Conferir no email, plataforma/AWS e site IDOC se chegou:
+                        <ul style="margin-top: 8px;">
+                            <li>✓ Radiografia panorâmica</li>
+                            <li>✓ Escaneamento superior</li>
+                            <li>✓ Escaneamento inferior</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: FERRAMENTAS -->
+        <section id="ferramentas">
+            <div class="card">
+                <h2>Ferramentas Principais 🛠️</h2>
+                <p>Você vai usar principalmente estas ferramentas no seu dia a dia:</p>
+            </div>
+
+            <div class="card">
+                <h3>💬 Slack - Comunicação Interna</h3>
+                <div class="alert alert-info">
+                    <strong>Propósito:</strong> Toda comunicação interna da Smiller acontece via Slack
+                </div>
+
+                <h4 style="margin-top: 20px;">Canais Importantes para CX:</h4>
+                <ul style="margin-left: 20px; line-height: 2.2;">
+                    <li><strong>#time_cx</strong> - Comunicação do time, solicitações para a supervisora, dúvidas do dia a dia</li>
+                    <li><strong>#cx-prod</strong> - Informar problemas com placas, casos que não podem atrasar fabricação</li>
+                    <li><strong>#cx-plan</strong> - Problemas/dúvidas em planejamentos, erros de link 3D</li>
+                    <li><strong>#cx-fin</strong> - Resoluções de problemas financeiros</li>
+                    <li><strong>#reunioes-plan-cx</strong> - Informações de reuniões de planejamento</li>
+                    <li><strong>#cx-tech</strong> - Informar problemas com tecnologia, plataforma do dentista, SUSE, etc</li>
+                    <li><strong>@roiberto</strong> - AI que resolve a maioria das dúvidas financeiras</li>
+                </ul>
+
+                <h4 style="margin-top: 25px;">✅ Boas Práticas:</h4>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Use threads para não poluir canais</li>
+                    <li>Mencione pessoas especificamente (@nome) para escalações</li>
+                    <li>Mantenha contexto - sempre cite o caso ID</li>
+                    <li>Use reações em emoji para confirmar recebimento</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>👥 Huggy - Comunicação com Clientes</h3>
+                <div class="alert alert-warning">
+                    <strong>Propósito:</strong> TODA comunicação com clientes (dentistas APENAS) é feita via Huggy. Nenhum email direto.
+                </div>
+
+                <h4 style="margin-top: 20px;">Como Funciona:</h4>
+                <ul style="margin-left: 20px; line-height: 2.2;">
+                    <li><strong>Chat com dentistas:</strong> Dentistas enviam mensagens via Huggy</li>
+                    <li><strong>Histórico:</strong> Todo caso tem histórico completo de mensagens</li>
+                    <li><strong>Templates:</strong> Use o Book de Mensagens para respostas padrão</li>
+                    <li><strong>SUSE:</strong> Dados sincronizam com sistema de credenciamento, fornece informações específicas do dentista</li>
+                </ul>
+
+                <h4 style="margin-top: 25px;">✅ Boas Práticas:</h4>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Sempre use o Book de Mensagens como base</li>
+                    <li>Seja profissional mas amigável</li>
+                    <li>Cite o nome do cliente/dentista na primeira mensagem</li>
+                    <li>Confirme dados importantes (placa #, paciente, etc)</li>
+                    <li>Se não sabe a resposta, escale para o time internamente</li>
+                    <li>Nunca deixe cliente sem resposta</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>📱 App Smiller</h3>
+                <p><strong>URL:</strong> app.smiller.com.br</p>
+                <p style="margin-top: 10px;">Dentistas usam este app para:</p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Solicitar planejamentos</li>
+                    <li>Anexar exames e documentações</li>
+                    <li>Acompanhar status de cases</li>
+                    <li>Preencher formulários</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Seu papel:</strong> Quando cliente diz que não conseguiu enviar algo no app, guie passo a passo ou escale para Tech.</p>
+            </div>
+
+            <div class="card" style="border: 2px solid var(--primary-blue); background: linear-gradient(135deg, rgba(70, 160, 191, 0.05) 0%, rgba(143, 202, 216, 0.05) 100%);">
+                <h3>💰 Smiller Flow</h3>
+                <p><strong>Descrição:</strong> Sistema de assinatura recorrente para pacientes que usam alinhadores. O dentista recebe automaticamente 1 placa por mês em formato de bloco.</p>
+
+                <h4 style="margin-top: 20px; color: var(--primary-blue);">Como Funciona:</h4>
+                <ul style="margin-left: 20px; line-height: 2.2;">
+                    <li><strong>Cadência:</strong> Paciente usa 1 placa/mês → Enviamos 1 placa/mês automaticamente</li>
+                    <li><strong>Auto Pedido:</strong> Enviamos automaticamente, sem necessidade de solicitação a cada mês</li>
+                    <li><strong>Prazo de Entrega:</strong> Data vencimento + 9 dias úteis</li>
+                </ul>
+
+                <h4 style="margin-top: 20px; color: var(--primary-blue);">Estrutura de Preço:</h4>
+                <ul style="margin-left: 20px; line-height: 2.2;">
+                    <li><strong>Entrada:</strong> R$ 380,00</li>
+                    <li><strong>Mensalidade:</strong> R$ 120,00 ou R$ 60,00 por placa</li>
+                    <li><strong>Entradona (Sugestão):</strong> Entrada + 1ª parcela = R$ 500,00</li>
+                </ul>
+
+                <p style="margin-top: 15px; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid var(--primary-blue);"><strong>⚡ Quando Mencionar:</strong> Pacientes que pretendem fazer acompanhamento contínuo. Para detalhes de negociação ou dúvidas, escale para #cx-fin ou #cx-plan.</p>
+            </div>
+
+            <div class="card" style="border: 2px solid var(--primary-blue); background: linear-gradient(135deg, rgba(70, 160, 191, 0.05) 0%, rgba(143, 202, 216, 0.05) 100%);">
+                <h3>💳 Smiller Pay</h3>
+                <p><strong>Descrição:</strong> Plataforma de pagamento integrada com diferentes planos de preço conforme volume de casos do dentista.</p>
+
+                <h4 style="margin-top: 20px; color: var(--primary-blue);">Planos Disponíveis:</h4>
+                <div style="overflow-x: auto; margin-top: 15px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                        <thead>
+                            <tr style="background: var(--light-blue); color: white;">
+                                <th style="padding: 10px; text-align: left; border: 1px solid var(--primary-blue);">Plano</th>
+                                <th style="padding: 10px; text-align: center; border: 1px solid var(--primary-blue);">1-9 placas</th>
+                                <th style="padding: 10px; text-align: center; border: 1px solid var(--primary-blue);">10-17 placas</th>
+                                <th style="padding: 10px; text-align: center; border: 1px solid var(--primary-blue);">18-31 placas</th>
+                                <th style="padding: 10px; text-align: center; border: 1px solid var(--primary-blue);">32-51 placas</th>
+                                <th style="padding: 10px; text-align: center; border: 1px solid var(--primary-blue);">+80 placas/ano</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Quarzo</strong></td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 899,90<br><small>1 placa grátis</small></td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.399,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.999,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 2.699,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 3.499,90</td>
+                            </tr>
+                            <tr style="background: #f0f8ff;">
+                                <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Jade</strong> ⭐</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 854,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.329,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.899,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 2.564,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 3.324,90</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Topázio</strong></td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 832,40</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.294,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.849,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 2.497,40</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 3.237,40</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Safira</strong></td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 809,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.259,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.799,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 2.429,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 3.149,90</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Ametista</strong></td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 787,40</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.224,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.749,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 2.362,40</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 3.062,40</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Black</strong></td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 764,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.189,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 1.699,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 2.294,90</td>
+                                <td style="padding: 10px; text-align: center; border: 1px solid var(--light-gray);">R$ 2.974,90</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 style="margin-top: 20px; color: var(--primary-blue);">Benefícios de Cada Plano:</h4>
+                <ul style="margin-left: 20px; line-height: 2; font-size: 0.95em;">
+                    <li><strong>Planejamento:</strong> Gratuito com setups limitados (planos Quarzo a Ametista)</li>
+                    <li><strong>Refinamento Ilimitado:</strong> R$ 399,90 para maioria dos planos</li>
+                    <li><strong>Frete:</strong> Padrão gratuito ou rápido gratuito (conforme plano)</li>
+                    <li><strong>Parcelamento:</strong> Até 12x (boleto ou cartão)</li>
+                    <li><strong>Scanner Intraoral:</strong> Incluído no plano Black</li>
+                </ul>
+
+                <p style="margin-top: 15px; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid var(--primary-blue);"><strong>⚡ Quando Mencionar:</strong> Quando dentista pergunta sobre preço, sempre sugira o plano que melhor se adequa ao seu volume de casos. O Jade é nosso mais popular. Para negociações especiais, escale para #cx-fin.</p>
+            </div>
+
+            <div class="card">
+                <h3>🔗 AWS & IDOC</h3>
+                <p>Sistemas onde você verifica se documentações chegaram corretamente.</p>
+                <p style="margin-top: 15px;"><strong>Quando usar:</strong> Sempre que conferir documentação de um novo case, verifique nestes sistemas se tem radiografia panorâmica e escaneamentos.</p>
+            </div>
+
+            <div class="card">
+                <h3>📋 Our Lousinha</h3>
+                <p>Canal oficial para solicitações e alterações no dia a dia:</p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Pedidos de placas</li>
+                    <li>Alterações de transportadora</li>
+                    <li>Ajustes operacionais</li>
+                </ul>
+                <p style="margin-top: 15px;">📖 <strong>Referência:</strong> Há um guia completo sobre "Nossa Lousinha" que você vai estudar durante o onboarding.</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: DECISION TREE DE ESCALAÇÃO -->
+        <section id="escalacao">
+            <div class="card">
+                <h2>Decision Tree de Escalação 📊</h2>
+                <p>Nem todo caso você resolve sozinho. Saber quando e <strong>para quem escalar</strong> é crítico para manter a qualidade do atendimento e a sanidade do time.</p>
+
+                <div class="alert alert-info">
+                    <strong>🎯 Regra de Ouro:</strong> Quando tiver dúvida, é melhor escalar do que responder errado. Somos um time!
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📌 Estrutura Hierárquica</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 20px 0;">
+                    <div style="background: linear-gradient(135deg, var(--light-blue) 0%, #5fa8d3 100%); color: white; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2.5em; margin-bottom: 10px;">👤</div>
+                        <h4 style="color: white; margin-bottom: 15px;">VOCÊ - Analista</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6;"><strong>Casos Básicos</strong><br>✓ Dúvidas simples • Prazos • Confirmações</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, #3a7fa5 100%); color: white; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2.5em; margin-bottom: 10px;">👩‍💼</div>
+                        <h4 style="color: white; margin-bottom: 15px;">Caroline - Supervisora</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6;"><strong>Casos Complexos</strong><br>✓ Problemas técnicos • Clientes insatisfeitos • Refabricações</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #c8102e 0%, #a00820 100%); color: white; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2.5em; margin-bottom: 10px;">👩‍💻</div>
+                        <h4 style="color: white; margin-bottom: 15px;">Isadora - Coordenadora</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6;"><strong>Casos Críticos</strong><br>✓ Ameaça de processo • Clientes VIP • Crises</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🔀 Decision Tree Prático</h3>
+                <h4 style="margin-top: 20px; color: var(--primary-blue);">P1: Sabe a resposta com 100% de certeza?</h4>
+                <div style="margin: 15px 0 15px 20px; padding-left: 15px; border-left: 4px solid var(--success);">
+                    <p><strong>SIM ➜</strong> Responda você mesmo!</p>
+                    <p style="margin-top: 10px;"><strong>NÃO ➜</strong> Vá para P2</p>
+                </div>
+
+                <h4 style="margin-top: 20px; color: var(--primary-blue);">P2: É problema técnico ou precisa outra área?</h4>
+                <div style="margin: 15px 0 15px 20px; padding-left: 15px; border-left: 4px solid var(--warning);">
+                    <p><strong>SIM ➜</strong> Escale para <strong>Caroline</strong></p>
+                    <p style="margin-top: 10px;"><strong>NÃO ➜</strong> Vá para P3</p>
+                </div>
+
+                <h4 style="margin-top: 20px; color: var(--primary-blue);">P3: Cliente muito insatisfeito ou agressivo?</h4>
+                <div style="margin: 15px 0 15px 20px; padding-left: 15px; border-left: 4px solid var(--danger);">
+                    <p><strong>SIM ➜</strong> Escale para <strong>Caroline</strong> (#urgent)</p>
+                    <p style="margin-top: 10px;"><strong>NÃO ➜</strong> Vá para P4</p>
+                </div>
+
+                <h4 style="margin-top: 20px; color: var(--primary-blue);">P4: É um dos problemas comuns?</h4>
+                <div style="margin: 15px 0 15px 20px; padding-left: 15px; border-left: 4px solid var(--success);">
+                    <p><strong>SIM ➜</strong> Responda seguindo protocolo</p>
+                    <p style="margin-top: 10px;"><strong>NÃO ➜</strong> Escale para <strong>Caroline</strong></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>💬 Template para Escalar no Slack</h3>
+                <div style="background: #f0f0f0; padding: 15px; border-left: 4px solid var(--primary-blue); border-radius: 4px; margin: 15px 0; font-family: monospace; font-size: 0.85em; line-height: 1.8;">
+                    @Caroline - Escalação [TIPO]<br>
+                    <strong>Case ID:</strong> [ID-123456]<br>
+                    <strong>Cliente:</strong> [Nome]<br>
+                    <strong>Problema:</strong> [Descrição breve]<br>
+                    <strong>Por quê:</strong> [Motivo]<br>
+                    <strong>Status:</strong> [Aguardando solução]
+                </div>
+
+                <h4 style="margin-top: 20px;">Exemplo Real:</h4>
+                <div style="background: #f9f9f9; padding: 15px; border-left: 4px solid var(--primary-blue); border-radius: 4px; margin: 15px 0; font-size: 0.9em;">
+                    @Caroline - Escalação CLIENTE IRADO 🚨<br>
+                    <strong>Case:</strong> ID-467791186 | Tiago Lopes<br>
+                    <strong>Problema:</strong> Placas com defeito, paciente não consegue usar<br>
+                    <strong>Por quê:</strong> Muito insatisfeito, ameaça cancelar futuros pedidos<br>
+                    <strong>Status:</strong> Aguardando aprovação de reenvio sem custo
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>🎓 Regra Final:</strong> Escalar não é fracasso, é <strong>sinergia</strong>. Sempre com contexto, clareza e humildade.
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5B: TERMOMETRO SMILLER -->
+        <section id="termometro">
+            <div class="card">
+                <h2>Termometro Smiller 🌡️</h2>
+                <p>Guia visual e interativo para entender os níveis de escalação e como tomar decisões baseado no histórico do cliente.</p>
+
+                <iframe width="100%" height="800" src="https://docs.google.com/presentation/d/1loxYvm9XS6yb5SY70xSs0k3etU00n5kuj6VOMiU0Rfg/embed?start=false&loop=false&delayms=3000&slide=id.p1" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border-radius: 8px; margin-top: 20px;"></iframe>
+
+                <div class="alert alert-info" style="margin-top: 20px;">
+                    <strong>📌 O Termometro em 3 Passos:</strong>
+                    <ol style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Pesquise:</strong> Verifique TODO o histórico do caso (reenvios, replanejamentos, cobranças)</li>
+                        <li><strong>Defina:</strong> Classifique como SIMPLES, DESGASTADO ou CRÍTICO</li>
+                        <li><strong>Aja:</strong> Você resolve, você + supervisora, ou escala para Isadora</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: BOOK DE MENSAGENS -->
+        <section id="mensagens">
+            <div class="card">
+                <h2>Book de Mensagens Padrão 📖</h2>
+                <p>Estas são as principais mensagens que você vai usar no dia a dia com clientes. <strong>Sempre adapte conforme necessário, mas mantenha a estrutura e tom.</strong></p>
+
+                <div class="alert alert-info">
+                    <strong>💡 Lembre-se:</strong> Consistência é essencial. Todos respondemos de forma parecida, o que transmite profissionalismo.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>✅ Confirmação de Recebimento</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! Recebemos sua solicitação para o caso do [Nome Completo do Paciente]. Estamos analisando a documentação e em breve enviaremos atualizações. Obrigado por confiar na Smiller!"</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📋 Solicitação de Documentação Pendente</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! Para continuar com o planejamento do paciente [Nome Completo], precisamos de: [listar documentação]. Poderia enviar via plataforma app.smiller.com.br? Qualquer dúvida, estamos aqui!"</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>⏱️ Informação de Prazo</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! O planejamento do paciente [Nome Completo] foi aprovado! ✅ As primeiras placas estarão prontas em 7 dias úteis + prazo de entrega para sua região. Você receberá notificação assim que sairmos."</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🚚 Notificação de Envio</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! As placas do paciente [Nome Completo] já foram despachadas! 📦 Aqui está o código de rastreamento: [código]. Você pode acompanhar a entrega em tempo real. Qualquer dúvida, nos avise!"</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>❌ Resposta a Problema (Mau Encaixe)</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! Sentimos ouvir sobre o mau encaixe na placa [número] do paciente [Nome Completo]. Para ajudarmos melhor, poderia enviar uma foto do problema? Assim conseguimos identificar se é tracking loss ou defeito de fabricação. Obrigado!"</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>✨ Solução (Reenvio Autorizado)</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! Analisamos o problema e vamos reenviar a placa [número] para o paciente [Nome Completo]. O tempo de refabricação é de 3 dias úteis + entrega. Você receberá um novo código de rastreamento assim que sairmos. Desculpe pelo incômodo!"</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>👤 Solicitação de Identificação do Paciente</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! Estamos trabalhando no planejamento e gostaria de confirmar: qual é o nome completo do paciente? Obrigado!"</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📞 Solicitação de Informação Adicional</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! Para avançarmos com o caso do paciente [Nome Completo], precisamos de mais uma informação: [descrever o que precisa]. Consegue nos enviar? Obrigado!"</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🚀 Promoção/Novidade</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! Temos uma novidade para você! [Descrever novo serviço/produto]. Quer saber mais? Estamos aqui para conversar! 😊"</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>⚠️ Resposta a Escalação</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! O caso do paciente [Nome Completo] foi analisado pelo nosso time especializado. Aqui está a solução: [descrever]. Se tiver mais dúvidas, conte com a gente!"</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>❓ Dúvida Técnica sobre a Plataforma</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! Agradeço a pergunta! [Explicar como funciona ou como fazer]. Caso tenha dúvidas técnicas mais complexas, estou passando para o time de tecnologia da Smiller. Eles te retornarão em breve!"</em>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>💰 Informação Financeira</h3>
+                <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <em>"Olá [Nome do Dentista]! Sobre a questão financeira do paciente [Nome Completo]: [responder ou informar que será repassado ao time de finanças]. Qualquer outra dúvida, avisa!"</em>
+                </p>
+            </div>
+
+            <div class="alert alert-warning">
+                <strong>📌 Regras Importantes:</strong>
+                <ul style="margin-top: 15px; margin-left: 20px; line-height: 1.8;">
+                    <li>Sempre personalize com o nome do dentista</li>
+                    <li>Identifique o paciente pelo nome completo (nunca peça Case ID)</li>
+                    <li>Seja empático e profissional</li>
+                    <li>Não prometa prazos que não pode cumprir</li>
+                    <li>Se não sabe, escale para o time apropriado</li>
+                    <li>Revise antes de enviar (sem erros de digitação)</li>
+                    <li>Mantenha o tom consistente e alinhado com valores Smiller</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 7: CASOS REAIS -->
+        <section id="casos">
+            <div class="card">
+                <h2>Exemplos de Casos Reais 🎯</h2>
+                <p>Aqui estão <strong>exemplos de conversas reais</strong> que você vai enfrentar no Huggy. Estude-os para entender melhor como responder.</p>
+
+                <div class="alert alert-warning">
+                    <strong>📌 Importante:</strong> Os dados dos clientes foram alterados por privacidade, mas o padrão de resposta é exatamente o que você deve usar.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Caso 1: Dúvida sobre Planejamento Pendente ⏳</h3>
+
+                <div style="background: #f9f9f9; border-left: 4px solid var(--primary-blue); padding: 15px; margin: 15px 0; border-radius: 4px;">
+                    <p><strong style="color: var(--primary-blue);">Cliente (Dentista):</strong></p>
+                    <p style="margin: 10px 0;">"Olá, quanto tempo demora até vocês começarem o planejamento do caso ID-467791186? Enviei ontem à noite."</p>
+                </div>
+
+                <p style="margin-bottom: 15px;"><strong>✅ Resposta Correta:</strong></p>
+
+                <div style="background: var(--light-blue); color: white; padding: 15px; border-radius: 4px;">
+                    <p>"Olá [Nome do Dentista]! Recebemos seu planejamento para o caso ID-467791186. Estamos processando a documentação e nosso prazo padrão é de <strong>3 dias úteis</strong>. Vamos atualizá-lo assim que começarmos. Obrigado por confiar na Smiller! 😊"</p>
+                </div>
+
+                <h4 style="margin-top: 20px;">📝 Por quê essa resposta funciona:</h4>
+                <ul style="margin-left: 20px;">
+                    <li>✓ Saudou o cliente pelo nome</li>
+                    <li>✓ Citou o Case ID para contexto</li>
+                    <li>✓ Informou o prazo claro (3 dias úteis)</li>
+                    <li>✓ Garantiu comunicação futura</li>
+                    <li>✓ Ton amigável mas profissional</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Caso 2: Placa com Mau Encaixe 😕</h3>
+
+                <div style="background: #f9f9f9; border-left: 4px solid var(--primary-blue); padding: 15px; margin: 15px 0; border-radius: 4px;">
+                    <p><strong style="color: var(--primary-blue);">Cliente (Dentista):</strong></p>
+                    <p style="margin: 10px 0;">"A placa 12 do caso do João não está encaixando direito. Está folgada. O que fazer?"</p>
+                </div>
+
+                <p style="margin-bottom: 15px;"><strong>✅ Resposta Correta:</strong></p>
+
+                <div style="background: var(--light-blue); color: white; padding: 15px; border-radius: 4px;">
+                    <p>"Olá [Nome do Dentista]! Desculpe pelo mau encaixe na placa 12. Para ajudarmos melhor, poderia enviar uma <strong>foto do problema</strong>? Assim conseguimos identificar se é tracking loss ou defeito de fabricação. Obrigado!"</p>
+                </div>
+
+                <h4 style="margin-top: 20px;">📝 Por quê essa resposta funciona:</h4>
+                <ul style="margin-left: 20px;">
+                    <li>✓ Mostrou empatia ("Desculpe")</li>
+                    <li>✓ Solicitou informação específica (foto)</li>
+                    <li>✓ Explicou por quê precisa da foto</li>
+                    <li>✓ Mantém a conversa aberta</li>
+                </ul>
+
+                <p style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid var(--warning); border-radius: 4px;"><strong>⚠️ Próximo Passo:</strong> Após receber a foto, você vai avaliar se é tracking loss (novo scan) ou defeito (reenvio 3 dias + frete).</p>
+            </div>
+
+            <div class="card">
+                <h3>Caso 3: Dúvida sobre Prazos 📅</h3>
+
+                <div style="background: #f9f9f9; border-left: 4px solid var(--primary-blue); padding: 15px; margin: 15px 0; border-radius: 4px;">
+                    <p><strong style="color: var(--primary-blue);">Cliente (Dentista):</strong></p>
+                    <p style="margin: 10px 0;">"Preciso entregar as placas para meu paciente até segunda-feira. As placas que pedi sairão até lá?"</p>
+                </div>
+
+                <p style="margin-bottom: 15px;"><strong>✅ Resposta Correta:</strong></p>
+
+                <div style="background: var(--light-blue); color: white; padding: 15px; border-radius: 4px;">
+                    <p>"Olá [Nome do Dentista]! Ótimo questionamento. Nosso prazo é de 7 dias úteis de fabricação + o tempo de frete para sua região. Com base na localização na nossa SUSE, consigo estimar se vai dar tempo. Deixe comigo que faço essa verificação e retorno em poucas horas!"</p>
+                </div>
+
+                <h4 style="margin-top: 20px;">📝 Por quê essa resposta funciona:</h4>
+                <ul style="margin-left: 20px;">
+                    <li>✓ Não prometeu o que não pode garantir</li>
+                    <li>✓ Mostrou que acessa a SUSE para informações</li>
+                    <li>✓ Ofereceu solução rápida</li>
+                    <li>✓ Tom colaborativo e proativo</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Caso 4: Requisição de Ajustes após Planejamento ✏️</h3>
+
+                <div style="background: #f9f9f9; border-left: 4px solid var(--primary-blue); padding: 15px; margin: 15px 0; border-radius: 4px;">
+                    <p><strong style="color: var(--primary-blue);">Cliente (Dentista):</strong></p>
+                    <p style="margin: 10px 0;">"Vi o planejamento aqui na plataforma, mas preciso de alguns ajustes. A inclinação do molar está diferente do que pedi. Como faço?"</p>
+                </div>
+
+                <p style="margin-bottom: 15px;"><strong>✅ Resposta Correta:</strong></p>
+
+                <div style="background: var(--light-blue); color: white; padding: 15px; border-radius: 4px;">
+                    <p>"Olá [Nome do Dentista]! Perfeito! Você pode solicitar os ajustes diretamente na plataforma. Entre em "Meus Pacientes" > selecione o caso > clique em "Solicitar Ajustes" e descreva exatamente o que precisa. Vou reenviar o planejamento corrigido em até 3 dias úteis! Qualquer dúvida, é só chamar."</p>
+                </div>
+
+                <h4 style="margin-top: 20px;">📝 Por quê essa resposta funciona:</h4>
+                <ul style="margin-left: 20px;">
+                    <li>✓ Deu instrução step-by-step da plataforma</li>
+                    <li>✓ Informou o prazo</li>
+                    <li>✓ Deixou porta aberta para mais dúvidas</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Caso 5: Cliente Irado com Atraso 😡</h3>
+
+                <div style="background: #f9f9f9; border-left: 4px solid var(--primary-blue); padding: 15px; margin: 15px 0; border-radius: 4px;">
+                    <p><strong style="color: var(--primary-blue);">Cliente (Dentista):</strong></p>
+                    <p style="margin: 10px 0;">"Isso é uma falta de respeito! Pedi as placas faz 10 dias e ainda nada! Vocês disseram 7 dias."</p>
+                </div>
+
+                <p style="margin-bottom: 15px;"><strong>✅ Resposta Correta:</strong></p>
+
+                <div style="background: var(--light-blue); color: white; padding: 15px; border-radius: 4px;">
+                    <p>"Olá [Nome do Dentista]! Peço desculpas sinceras pelo atraso. Nosso prazo é 7 dias <strong>úteis</strong> + o tempo de frete. Vou verificar imediatamente o status do pedido na nossa SUSE e rastrear com Produção. Você vai ter uma atualização em poucas horas. Obrigado pela paciência!"</p>
+                </div>
+
+                <h4 style="margin-top: 20px;">📝 Por quê essa resposta funciona:</h4>
+                <ul style="margin-left: 20px;">
+                    <li>✓ Pediu desculpas genuínas</li>
+                    <li>✓ Esclareceu o prazo (dias úteis)</li>
+                    <li>✓ Mostrou conhecimento dos sistemas (SUSE)</li>
+                    <li>✓ Tomou ação imediata e comprometida</li>
+                </ul>
+
+                <p style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid var(--warning); border-radius: 4px;"><strong>⚠️ Próximo Passo:</strong> Escale para o time de Produção no Slack (#urgent) para rastrear o pedido específico e dar atualização rápida.</p>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>🎓 Lição Principal:</strong> Sempre seja empático, informativo e ativo. Nunca prometa o que não pode garantir. Quando não souber, pergunte para entender melhor. Quando precisar, escale rápido.
+            </div>
+        </section>
+
+        <!-- SEÇÃO 8: TUTORIAIS -->
+        <section id="tutoriais">
+            <div class="card">
+                <h2>Tutoriais em Vídeo 🎥</h2>
+                <p>Aprenda a usar a plataforma Smiller com nossos vídeos de treinamento. Clique em qualquer tutorial para assistir.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+                <!-- Tutorial 1 -->
+                <div class="card" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onclick="window.open('https://www.youtube.com/watch?v=1AAwjXokDHc', '_blank')">
+                    <div style="background: linear-gradient(135deg, var(--light-blue) 0%, #5fa8d3 100%); padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 3em; color: white;">📱</div>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">Primeiro Acesso</h4>
+                    <p style="font-size: 0.9em; color: #666;">Como acessar a plataforma pela primeira vez.</p>
+                    <p style="margin-top: 15px; color: var(--primary-blue); font-weight: bold;">▶ Assistir Vídeo</p>
+                </div>
+
+                <!-- Tutorial 2 -->
+                <div class="card" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onclick="window.open('https://www.youtube.com/watch?v=GXT3fDip3FA', '_blank')">
+                    <div style="background: linear-gradient(135deg, var(--light-blue) 0%, #5fa8d3 100%); padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 3em; color: white;">👥</div>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">Meus Pacientes</h4>
+                    <p style="font-size: 0.9em; color: #666;">Como acessar e gerenciar seus pacientes.</p>
+                    <p style="margin-top: 15px; color: var(--primary-blue); font-weight: bold;">▶ Assistir Vídeo</p>
+                </div>
+
+                <!-- Tutorial 3 -->
+                <div class="card" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onclick="window.open('https://www.youtube.com/watch?v=EfWOVwdj6rg', '_blank')">
+                    <div style="background: linear-gradient(135deg, var(--light-blue) 0%, #5fa8d3 100%); padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 3em; color: white;">📄</div>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">Enviar Documentos</h4>
+                    <p style="font-size: 0.9em; color: #666;">Como realizar o envio de exames e documentação.</p>
+                    <p style="margin-top: 15px; color: var(--primary-blue); font-weight: bold;">▶ Assistir Vídeo</p>
+                </div>
+
+                <!-- Tutorial 4 -->
+                <div class="card" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onclick="window.open('https://www.youtube.com/watch?v=rzZIHxttKdI', '_blank')">
+                    <div style="background: linear-gradient(135deg, var(--light-blue) 0%, #5fa8d3 100%); padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 3em; color: white;">✅</div>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">Aprovar Planejamento</h4>
+                    <p style="font-size: 0.9em; color: #666;">Como aprovar um caso de paciente após análise.</p>
+                    <p style="margin-top: 15px; color: var(--primary-blue); font-weight: bold;">▶ Assistir Vídeo</p>
+                </div>
+
+                <!-- Tutorial 5 -->
+                <div class="card" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onclick="window.open('https://www.youtube.com/watch?v=7oJQx2aeV2s', '_blank')">
+                    <div style="background: linear-gradient(135deg, var(--light-blue) 0%, #5fa8d3 100%); padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 3em; color: white;">⏱️</div>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">Consultar Prazo de Envio</h4>
+                    <p style="font-size: 0.9em; color: #666;">Como consultar o prazo estimado de envio.</p>
+                    <p style="margin-top: 15px; color: var(--primary-blue); font-weight: bold;">▶ Assistir Vídeo</p>
+                </div>
+
+                <!-- Tutorial 6 -->
+                <div class="card" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onclick="window.open('https://www.youtube.com/watch?v=wBEQDLdJ1UU', '_blank')">
+                    <div style="background: linear-gradient(135deg, var(--light-blue) 0%, #5fa8d3 100%); padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 3em; color: white;">🚚</div>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">Consultar Link de Rastreio</h4>
+                    <p style="font-size: 0.9em; color: #666;">Como rastrear seu pedido enviado em tempo real.</p>
+                    <p style="margin-top: 15px; color: var(--primary-blue); font-weight: bold;">▶ Assistir Vídeo</p>
+                </div>
+
+                <!-- Tutorial 7 -->
+                <div class="card" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onclick="window.open('https://www.youtube.com/watch?v=YfoskAXb65M', '_blank')">
+                    <div style="background: linear-gradient(135deg, var(--light-blue) 0%, #5fa8d3 100%); padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 3em; color: white;">🔧</div>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">Solicitar Ajustes</h4>
+                    <p style="font-size: 0.9em; color: #666;">Como solicitar ajustes no planejamento do caso.</p>
+                    <p style="margin-top: 15px; color: var(--primary-blue); font-weight: bold;">▶ Assistir Vídeo</p>
+                </div>
+
+                <!-- Tutorial 8 -->
+                <div class="card" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onclick="window.open('https://www.youtube.com/watch?v=rkMIDb8AuZ8', '_blank')">
+                    <div style="background: linear-gradient(135deg, var(--light-blue) 0%, #5fa8d3 100%); padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 3em; color: white;">✨</div>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">Solicitar Refinamento</h4>
+                    <p style="font-size: 0.9em; color: #666;">Como solicitar um refinamento após término do tratamento.</p>
+                    <p style="margin-top: 15px; color: var(--primary-blue); font-weight: bold;">▶ Assistir Vídeo</p>
+                </div>
+
+                <!-- Tutorial 9 -->
+                <div class="card" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onclick="window.open('https://www.youtube.com/watch?v=riQsUlXsyVM', '_blank')">
+                    <div style="background: linear-gradient(135deg, var(--light-blue) 0%, #5fa8d3 100%); padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 3em; color: white;">📦</div>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">Solicitar Placas</h4>
+                    <p style="font-size: 0.9em; color: #666;">Como solicitar novas placas durante o tratamento.</p>
+                    <p style="margin-top: 15px; color: var(--primary-blue); font-weight: bold;">▶ Assistir Vídeo</p>
+                </div>
+            </div>
+
+            <div class="alert alert-info" style="margin-top: 30px;">
+                <strong>💡 Dica:</strong> Todos esses tutoriais estão disponíveis em https://app.smiller.com.br/tutorials. Recomende para dentistas que têm dúvidas sobre como usar a plataforma!
+            </div>
+        </section>
+
+        <!-- SEÇÃO 9: QUIZ -->
+        <section id="quiz">
+            <div class="card">
+                <h2>Quiz de Aprendizado 🎓</h2>
+                <p>Teste seus conhecimentos sobre os processos Smiller. Responda as perguntas abaixo e clique em "Verificar Respostas".</p>
+            </div>
+
+            <div class="quiz-container">
+                <form id="quizForm">
+                    <!-- Pergunta 1 -->
+                    <div class="question">
+                        <h4>1. Qual é o prefixo Case ID para Alinhadores?</h4>
+                        <div class="option">
+                            <input type="radio" name="q1" value="incorrect" id="q1_a">
+                            <label for="q1_a">a) 2</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="correct" id="q1_b">
+                            <label for="q1_b">b) 1/8</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="incorrect" id="q1_c">
+                            <label for="q1_c">c) 6</label>
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 2 -->
+                    <div class="question">
+                        <h4>2. Quanto tempo leva para fabricar um Alinhador?</h4>
+                        <div class="option">
+                            <input type="radio" name="q2" value="incorrect" id="q2_a">
+                            <label for="q2_a">a) 3 dias úteis</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="correct" id="q2_b">
+                            <label for="q2_b">b) 7 dias úteis + frete</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="incorrect" id="q2_c">
+                            <label for="q2_c">c) 10 dias úteis</label>
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 3 -->
+                    <div class="question">
+                        <h4>3. Onde você responde para clientes na Smiller?</h4>
+                        <div class="option">
+                            <input type="radio" name="q3" value="incorrect" id="q3_a">
+                            <label for="q3_a">a) Email direto</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="correct" id="q3_b">
+                            <label for="q3_b">b) Huggy</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="incorrect" id="q3_c">
+                            <label for="q3_c">c) Slack</label>
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 4 -->
+                    <div class="question">
+                        <h4>4. Qual é a validade de um Escaneamento?</h4>
+                        <div class="option">
+                            <input type="radio" name="q4" value="correct" id="q4_a">
+                            <label for="q4_a">a) 6 meses</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="incorrect" id="q4_b">
+                            <label for="q4_b">b) 12 meses</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="incorrect" id="q4_c">
+                            <label for="q4_c">c) 1 ano</label>
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 5 -->
+                    <div class="question">
+                        <h4>5. O que fazer se uma placa quebra com menos de 10 dias de uso?</h4>
+                        <div class="option">
+                            <input type="radio" name="q5" value="correct" id="q5_a">
+                            <label for="q5_a">a) Cobrar a refabricação (R$ 35,90)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="incorrect" id="q5_b">
+                            <label for="q5_b">b) Reenviar sem custo</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="incorrect" id="q5_c">
+                            <label for="q5_c">c) Ignorar e deixar usar próxima placa</label>
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 6 -->
+                    <div class="question">
+                        <h4>6. Qual é um dos nossos valores evoluídos?</h4>
+                        <div class="option">
+                            <input type="radio" name="q6" value="incorrect" id="q6_a">
+                            <label for="q6_a">a) Harmonia</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="correct" id="q6_b">
+                            <label for="q6_b">b) Excelência</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="incorrect" id="q6_c">
+                            <label for="q6_c">c) Empatia</label>
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 7 -->
+                    <div class="question">
+                        <h4>7. Qual é o tempo de resposta esperado no Huggy para casos normais?</h4>
+                        <div class="option">
+                            <input type="radio" name="q7" value="incorrect" id="q7_a">
+                            <label for="q7_a">a) 1 hora</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q7" value="correct" id="q7_b">
+                            <label for="q7_b">b) Até 24h úteis</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q7" value="incorrect" id="q7_c">
+                            <label for="q7_c">c) 48 horas</label>
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 8 -->
+                    <div class="question">
+                        <h4>8. Qual é o primeiro passo quando um cliente relata mau encaixe em uma placa?</h4>
+                        <div class="option">
+                            <input type="radio" name="q8" value="incorrect" id="q8_a">
+                            <label for="q8_a">a) Reenviar placa imediatamente</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="correct" id="q8_b">
+                            <label for="q8_b">b) Solicitar foto para análise</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="incorrect" id="q8_c">
+                            <label for="q8_c">c) Sugerir novo escaneamento</label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn" onclick="verificarQuiz()">✓ Verificar Respostas</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetarQuiz()">↻ Limpar Respostas</button>
+                </form>
+
+                <div id="resultado" class="hidden"></div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 9: CHECKLIST -->
+        <section id="checklist">
+            <div class="card">
+                <h2>Checklist de Onboarding ✅</h2>
+                <p>Use esta lista para acompanhar seu progresso. Marque cada item conforme completar.</p>
+
+                <div class="progress" style="margin-top: 20px;">
+                    <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                </div>
+                <p id="progressText" style="text-align: center; color: #666; margin-bottom: 20px;">0% concluído</p>
+            </div>
+
+            <div class="card">
+                <h3>📋 Semana 1 - Fundações</h3>
+                <ul class="checklist">
+                    <li>
+                        <input type="checkbox" id="check1" onchange="atualizarProgresso()">
+                        <label for="check1"><strong>Dia 1:</strong> Recepção, setup de computador e acesso a sistemas</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check2" onchange="atualizarProgresso()">
+                        <label for="check2"><strong>Dia 1:</strong> Apresentação da empresa, valores e estrutura</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check3" onchange="atualizarProgresso()">
+                        <label for="check3"><strong>Dia 1:</strong> Conhecer o time de Customer Operations</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check4" onchange="atualizarProgresso()">
+                        <label for="check4"><strong>Dia 2:</strong> Setup do Slack - canais principais e perfil</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check5" onchange="atualizarProgresso()">
+                        <label for="check5"><strong>Dia 2:</strong> Setup do Huggy - entender interface e como responder</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check6" onchange="atualizarProgresso()">
+                        <label for="check6"><strong>Dia 3:</strong> Estudar Guia de Atendimento (nomenclatura, prazos, prefixos)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check7" onchange="atualizarProgresso()">
+                        <label for="check7"><strong>Dia 3-4:</strong> Memorizar casos comuns (mau encaixe, quebra, ajustes)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check8" onchange="atualizarProgresso()">
+                        <label for="check8"><strong>Dia 4:</strong> Ler Book de Mensagens Padrão</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check9" onchange="atualizarProgresso()">
+                        <label for="check9"><strong>Dia 5:</strong> Revisar fluxo de tratamentos (Smiller + Athena)</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>📊 Semana 2-4 - Prática</h3>
+                <ul class="checklist">
+                    <li>
+                        <input type="checkbox" id="check10" onchange="atualizarProgresso()">
+                        <label for="check10">Acompanhar CX sênior respondendo casos no Huggy</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check11" onchange="atualizarProgresso()">
+                        <label for="check11">Responder primeiros casos simples com supervisão</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check12" onchange="atualizarProgresso()">
+                        <label for="check12">Aprender a escalar casos para times apropriados no Slack</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check13" onchange="atualizarProgresso()">
+                        <label for="check13">Entender sistema de casos e rastreamento</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check14" onchange="atualizarProgresso()">
+                        <label for="check14">Participar de daily com o time</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check15" onchange="atualizarProgresso()">
+                        <label for="check15">Resolver case de mau encaixe independentemente</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check16" onchange="atualizarProgresso()">
+                        <label for="check16">Resolver case de placa quebrada independentemente</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check17" onchange="atualizarProgresso()">
+                        <label for="check17">Fazer quiz de aprendizado (score mínimo 85%)</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🎯 30 Dias - Autonomia</h3>
+                <ul class="checklist">
+                    <li>
+                        <input type="checkbox" id="check18" onchange="atualizarProgresso()">
+                        <label for="check18">Responder cases de forma independente com segurança</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check19" onchange="atualizarProgresso()">
+                        <label for="check19">Conhecer os principais dentistas e suas demandas</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check20" onchange="atualizarProgresso()">
+                        <label for="check20">Manter tempo de resposta de até 24h úteis consistentemente</label>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 10: ATHENA (INFORMAÇÕES ADICIONAIS) -->
+        <section id="athena">
+            <div class="card">
+                <h2>Fluxo de Tratamentos: Smiller + Athena Saúde 🔄</h2>
+                <p>Este é o processo padrão de um caso do início ao fim, incluindo a integração com Athena:</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>01 - Solicitação Planejamento</h4>
+                            <p>Dentista solicita planejamento anexando exames (plataforma app.smiller.com.br)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>02 - Exames</h4>
+                            <p>Paciente faz escaneamento intraoral e radiografia panorâmica</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>03 - Planejamento</h4>
+                            <p><strong>Smiller realiza em 3 dias úteis</strong> o planejamento de acordo com orientações</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>04 - Aprovação (A1)</h4>
+                            <p>Solicitação de planejamento é enviada para Athena Saúde para aprovação</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>05 - Ajustes</h4>
+                            <p>Dentista solicita ajustes caso necessário</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>06 - Aprovação (A2)</h4>
+                            <p>Após ajustes, Smiller fabrica e entrega primeiras placas</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>07 - Solicitação Fabricação</h4>
+                            <p><strong>7 dias úteis + frete</strong> para entrega</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>08 - Envio</h4>
+                            <p>Confirmação de envio/despacho ao cliente</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info" style="margin-top: 20px;">
+                    <strong>💡 Sobre Athena:</strong> Athena Saúde é nosso parceiro de aprovação. Quando um planejamento é submetido, ele precisa passar pela aprovação deles (geralmente em 1-2 dias úteis) antes de entrar em fabricação. Se um cliente questiona este prazo, explique que fazemos nossa parte em 3 dias, mas Athena adiciona mais 1-2 dias na análise. Este é um processo importante para garantir qualidade.
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Funções de navegação
+            function mostrarSecao(id) {
+                const secoes = document.querySelectorAll('main > section');
+                secoes.forEach(s => {
+                    s.classList.remove('active');
+                    s.style.display = 'none';
+                });
+                const secao = document.getElementById(id);
+                if (secao) {
+                    secao.classList.add('active');
+                    secao.style.display = 'block';
+                }
+                window.scrollTo(0, 0);
+                atualizarNavegacao(id);
+            }
+
+            function atualizarNavegacao(secaoAtiva) {
+                const botoesNav = document.querySelectorAll('.nav-btn');
+                botoesNav.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-secao') === secaoAtiva) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            // Quiz
+            function verificarQuiz() {
+                const respostas = {
+                    q1: 'correct',
+                    q2: 'correct',
+                    q3: 'correct',
+                    q4: 'correct',
+                    q5: 'correct',
+                    q6: 'correct',
+                    q7: 'correct',
+                    q8: 'correct'
+                };
+
+                let pontos = 0;
+                let respondidas = 0;
+
+                Object.keys(respostas).forEach(q => {
+                    const resposta = document.querySelector(`input[name="${q}"]:checked`);
+                    if (resposta) {
+                        respondidas++;
+                        if (resposta.value === respostas[q]) {
+                            pontos++;
+                        }
+                    }
+                });
+
+                const total = Object.keys(respostas).length;
+                const percentual = Math.round((pontos / total) * 100);
+
+                let mensagem = '';
+                if (respondidas < total) {
+                    mensagem = `<div class="alert alert-warning">Você respondeu ${respondidas} de ${total} questões. Responda todas para submeter.</div>`;
+                } else if (percentual >= 85) {
+                    mensagem = `<div class="alert alert-success">🎉 Parabéns! Você acertou ${pontos} de ${total} questões (${percentual}%). Você está pronto para começar!</div>`;
+                } else {
+                    mensagem = `<div class="alert alert-error">Você acertou ${pontos} de ${total} questões (${percentual}%). Revise o material e tente novamente (mínimo 85%).</div>`;
+                }
+
+                document.getElementById('resultado').innerHTML = mensagem;
+                document.getElementBy
