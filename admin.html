@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Smiller Onboarding</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #46a0bf;
+            --light-blue: #8fcad8;
+            --danger: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --dark-gray: #2c3e50;
+            --light-gray: #ecf0f1;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #f5f7fa;
+            color: var(--dark-gray);
+        }
+
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box h1 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        .login-box p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--light-gray);
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3a8ba3;
+        }
+
+        .error {
+            color: var(--danger);
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        /* Admin Panel */
+        .admin-container {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .admin-header h1 {
+            color: var(--primary-blue);
+        }
+
+        .btn-logout {
+            background: var(--danger);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-logout:hover {
+            background: #c0392b;
+        }
+
+        .tab-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 12px;
+            border: 2px solid var(--light-gray);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .editor-panel {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .editor-panel.active {
+            display: block;
+        }
+
+        .editor-panel h2 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--light-blue);
+            padding-bottom: 10px;
+        }
+
+        .editor-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .editor-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .editor-section textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px;
+            border: 2px solid var(--light-gray);
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            resize: vertical;
+        }
+
+        .editor-section textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: flex-end;
+        }
+
+        .btn-save {
+            background: var(--success);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-save:hover {
+            background: #229954;
+        }
+
+        .btn-cancel {
+            background: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .status-message {
+            display: none;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        .version-info {
+            background: var(--light-blue);
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login -->
+    <div class="login-container" id="loginSection">
+        <div class="login-box">
+            <h1>🔐 Admin Smiller</h1>
+            <p>Painel de Controle - Edição de Conteúdo</p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="seu@email.com" value="isadora.guardia@smiller.com.br">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                <div class="error" id="loginError"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-container" id="adminSection">
+        <div class="admin-header">
+            <div>
+                <h1>📝 Editor de Conteúdo</h1>
+                <p>Edite as abas do onboarding Smiller</p>
+            </div>
+            <button class="btn-logout" onclick="logout()">🚪 Sair</button>
+        </div>
+
+        <div id="statusMessage" class="status-message"></div>
+
+        <div class="tab-buttons" id="tabButtons"></div>
+
+        <div id="editorsContainer"></div>
+
+        <div class="action-buttons" style="justify-content: space-between;">
+            <div>
+                <small style="color: #999;">Última atualização: <span id="lastUpdate">--</span></small>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-cancel" onclick="resetChanges()">↻ Descartar</button>
+                <button class="btn-save" onclick="saveChanges()">💾 Salvar Tudo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Token é guardado como variável de ambiente no Vercel
+        // Este arquivo NÃO contém o token (para segurança)
+        const REPO = 'isadoraguardia-web/smiller-onboarding';
+        const ADMIN_PASSWORD = '301293';
+        const ADMIN_EMAIL = 'isadora.guardia@smiller.com.br';
+
+        const TABS = [
+            { id: 'inicio', label: 'Início', title: 'Bem-vindo ao Time' },
+            { id: 'empresa', label: 'Sobre Smiller', title: 'Sobre a Empresa' },
+            { id: 'processos', label: 'Processos', title: 'Processos e Fluxos' },
+            { id: 'ferramentas', label: 'Ferramentas', title: 'Ferramentas Principais' },
+            { id: 'escalacao', label: 'Escalação', title: 'Decision Tree' },
+            { id: 'termometro', label: 'Termometro', title: 'Termometro Smiller' },
+            { id: 'mensagens', label: 'Mensagens', title: 'Book de Mensagens' },
+            { id: 'casos', label: 'Casos Reais', title: 'Casos Reais' },
+            { id: 'tutoriais', label: 'Tutoriais', title: 'Tutoriais' },
+            { id: 'quiz', label: 'Quiz', title: 'Quiz de Aprendizado' },
+            { id: 'checklist', label: 'Checklist', title: 'Checklist' },
+            { id: 'athena', label: 'Athena', title: 'Athena Saúde' }
+        ];
+
+        let contentData = {};
+        let hasChanges = false;
+
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+                localStorage.setItem('adminLogin', 'true');
+                showAdmin();
+                loadContent();
+            } else {
+                document.getElementById('loginError').textContent = 'Email ou senha incorretos';
+            }
+        });
+
+        async function loadContent() {
+            try {
+                // Tentar carregar do GitHub via API pública (sem autenticação para leitura)
+                const response = await fetch(`https://raw.githubusercontent.com/${REPO}/main/content.json`);
+
+                if (response.ok) {
+                    contentData = await response.json();
+                    // Get last modified time
+                    try {
+                        const commitResponse = await fetch(`https://api.github.com/repos/${REPO}/commits?path=content.json&per_page=1`);
+                        if (commitResponse.ok) {
+                            const commits = await commitResponse.json();
+                            if (commits.length > 0) {
+                                document.getElementById('lastUpdate').textContent = new Date(commits[0].commit.committer.date).toLocaleString('pt-BR');
+                            }
+                        }
+                    } catch (e) {
+                        console.log('Could not get commit date');
+                    }
+                } else {
+                    contentData = {};
+                    TABS.forEach(tab => {
+                        contentData[tab.id] = { content: '(Conteúdo ainda não foi criado. Comece a editar e salve.)' };
+                    });
+                }
+
+                renderEditors();
+            } catch (error) {
+                console.error('Erro ao carregar conteúdo:', error);
+                showStatus('Erro ao carregar conteúdo: ' + error.message, 'error');
+            }
+        }
+
+        function renderEditors() {
+            const container = document.getElementById('editorsContainer');
+            const tabButtons = document.getElementById('tabButtons');
+
+            container.innerHTML = '';
+            tabButtons.innerHTML = '';
+
+            TABS.forEach((tab, index) => {
+                // Create tab button
+                const btn = document.createElement('button');
+                btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+                btn.textContent = tab.label;
+                btn.onclick = () => switchTab(tab.id);
+                tabButtons.appendChild(btn);
+
+                // Create editor panel
+                const panel = document.createElement('div');
+                panel.id = `panel-${tab.id}`;
+                panel.className = `editor-panel ${index === 0 ? 'active' : ''}`;
+                panel.innerHTML = `
+                    <h2>${tab.title}</h2>
+                    <div class="editor-section">
+                        <label for="editor-${tab.id}">Conteúdo HTML da aba "${tab.label}"</label>
+                        <textarea id="editor-${tab.id}" placeholder="Digite o conteúdo HTML aqui..." onchange="markAsChanged()">${contentData[tab.id]?.content || ''}</textarea>
+                        <small style="color: #999; display: block; margin-top: 10px;">💡 Você pode usar HTML, Markdown ou texto simples. Use tags como &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;strong&gt;, etc.</small>
+                    </div>
+                `;
+                container.appendChild(panel);
+            });
+        }
+
+        function switchTab(tabId) {
+            // Hide all panels
+            document.querySelectorAll('.editor-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+            // Show selected
+            document.getElementById(`panel-${tabId}`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function markAsChanged() {
+            hasChanges = true;
+        }
+
+        async function saveChanges() {
+            // Collect all changes
+            TABS.forEach(tab => {
+                const editor = document.getElementById(`editor-${tab.id}`);
+                contentData[tab.id] = { content: editor.value };
+            });
+
+            try {
+                // Chamar a API Vercel para salvar (token está armazenado de forma segura no servidor)
+                const response = await fetch('/api/saveContent', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ content: contentData })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    showStatus('✅ Conteúdo salvo com sucesso! O site será atualizado em poucos segundos.', 'success');
+                    hasChanges = false;
+                    // Reload to show latest update time
+                    setTimeout(() => loadContent(), 2000);
+                } else {
+                    throw new Error(result.error || 'Erro ao salvar');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                showStatus('❌ Erro ao salvar: ' + error.message, 'error');
+            }
+        }
+
+        function resetChanges() {
+            if (confirm('Descartar todas as mudanças?')) {
+                loadContent();
+                showStatus('Mudanças descartadas', 'success');
+            }
+        }
+
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.className = `status-message ${type}`;
+            setTimeout(() => {
+                statusEl.classList.remove('success', 'error');
+            }, 5000);
+        }
+
+        function showAdmin() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('adminSection').style.display = 'block';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLogin');
+            location.reload();
+        }
+
+        // Check login on load
+        if (localStorage.getItem('adminLogin')) {
+            showAdmin();
+            loadContent();
+        }
+    </script>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                             
