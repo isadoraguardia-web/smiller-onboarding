@@ -501,7 +501,7 @@
         };
 
         let contentData = {};
-h
+
         // Login
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -517,39 +517,51 @@ h
             }
         });
 
-async function loadAndRenderEditor() {
+        async function loadAndRenderEditor() {
+            // Initialize contentData with empty values first
             Object.keys(TABS_CONFIG).forEach(tabId => {
-                            contentData[tabId] = {};
-                            TABS_CONFIG[tabId].fields.forEach(field => {
-                                                contentData[tabId][field.name] = '';
-                            });
+                contentData[tabId] = {};
+                TABS_CONFIG[tabId].fields.forEach(field => {
+                    contentData[tabId][field.name] = '';
+                });
             });
+
+            // Try to load existing content from GitHub
             try {
-                            const response = await fetch('/api/loadContent');
-                            if (response.ok) {
-                                                const existingContent = await response.json();
-                                                Object.keys(existingContent).forEach(tabId => {
-                                                                        if (contentData[tabId]) {
-                                                                                                    Object.keys(existingContent[tabId]).forEach(fieldName => {
-                                                                                                                                    let value = existingContent[tabId][fieldName];
-                                                                                                                                    if (typeof value === 'object') {
-                                                                                                                                                                        if (Array.isArray(value)) {
-                                                                                                                                                                                                                contentData[tabId][fieldName] = value.join('\n');
-                                                                                                                                                                        } else {
-                                                                                                                                                                                                                contentData[tabId][fieldName] = JSON.stringify(value);
-                                                                                                                                                                                                            }
-                                                                                                                                        } else {
-                                                                                                                                                                        contentData[tabId][fieldName] = value || '';
-                                                                                                                                        }
-                                                                                                        });
-                                                                        }
-                                                });
-                            }
+                const response = await fetch('/api/loadContent');
+                if (response.ok) {
+                    const existingContent = await response.json();
+
+                    // Merge existing content into contentData
+                    Object.keys(existingContent).forEach(tabId => {
+                        if (contentData[tabId]) {
+                            Object.keys(existingContent[tabId]).forEach(fieldName => {
+                                let value = existingContent[tabId][fieldName];
+
+                                // Handle different data types
+                                if (typeof value === 'object') {
+                                    // If it's an object/array, convert to appropriate format
+                                    if (Array.isArray(value)) {
+                                        // For lists stored as arrays
+                                        contentData[tabId][fieldName] = value.join('\n');
+                                    } else {
+                                        // For timeline items stored as objects
+                                        contentData[tabId][fieldName] = JSON.stringify(value);
+                                    }
+                                } else {
+                                    // If it's a string, keep as is
+                                    contentData[tabId][fieldName] = value || '';
+                                }
+                            });
+                        }
+                    });
+                }
             } catch (error) {
-                            console.log('Note: Could not load existing content, starting fresh');
+                console.log('Note: Could not load existing content, starting fresh');
             }
+
             renderTabs();
-}
+        }
 
         function renderTabs() {
             const tabButtons = document.getElementById('tabButtons');
@@ -678,56 +690,3 @@ async function loadAndRenderEditor() {
                         contentData[tabId][fieldName] = input.value || input.textContent;
                     }
                 }
-            });
-
-            try {
-                // Salvar via API do Vercel
-                const response = await fetch('/api/saveContent', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ content: contentData })
-                });
-
-                if (response.ok) {
-                    showStatus('✅ Conteúdo salvo com sucesso!', 'success');
-                    setTimeout(() => loadAndRenderEditor(), 2000);
-                } else {
-                    throw new Error('Erro ao salvar');
-                }
-            } catch (error) {
-                showStatus('❌ Erro: ' + error.message, 'error');
-            }
-        }
-
-        function resetChanges() {
-            if (confirm('Descartar todas as mudanças?')) {
-                loadAndRenderEditor();
-                showStatus('Mudanças descartadas', 'success');
-            }
-        }
-
-        function showStatus(message, type) {
-            const statusEl = document.getElementById('statusMessage');
-            statusEl.textContent = message;
-            statusEl.className = `status-message ${type}`;
-            setTimeout(() => statusEl.classList.remove('success', 'error'), 5000);
-        }
-
-        function showAdmin() {
-            document.getElementById('loginSection').style.display = 'none';
-            document.getElementById('adminSection').style.display = 'block';
-        }
-
-        function logout() {
-            localStorage.removeItem('adminLogin');
-            location.reload();
-        }
-
-        // Check login on load
-        if (localStorage.getItem('adminLogin')) {
-            showAdmin();
-            loadAndRenderEditor();
-        }
-    </script>
-</body>
-</html>
