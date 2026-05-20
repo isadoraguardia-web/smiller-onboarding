@@ -1,0 +1,68 @@
+{
+  "inicio": {
+    "titulo_principal": "",
+    "descricao": "",
+    "lista_items": "",
+    "titulo_primeiro_dia": "",
+    "timeline_items": "",
+    "dica": ""
+  },
+  "empresa": {
+    "descricao_empresa": "",
+    "valor_1_titulo": "",
+    "valor_1_descricao": "",
+    "valor_2_titulo": "",
+    "valor_2_descricao": "",
+    "valor_3_titulo": "",
+    "valor_3_descricao": "",
+    "valor_4_titulo": "",
+    "valor_4_descricao": "",
+    "valor_5_titulo": "",
+    "valor_5_descricao": "",
+    "papel_cx": "",
+    "responsabilidades": "",
+    "iniciativas": ""
+  },
+  "processos": {
+    "descricao_processos": "",
+    "processos_items": ""
+  },
+  "ferramentas": {
+    "descricao_ferramentas": "",
+    "ferramentas_items": ""
+  },
+  "escalacao": {
+    "titulo_decision_tree": "",
+    "regra_ouro": "",
+    "conteudo_principal": ""
+  },
+  "termometro": {
+    "titulo_termometro": "Termômetro",
+    "descricao_termometro": "",
+    "url_google_slides": ""
+  },
+  "mensagens": {
+    "descricao_mensagens": "",
+    "templates": ""
+  },
+  "casos": {
+    "introducao_casos": "",
+    "casos_descricao": ""
+  },
+  "tutoriais": {
+    "descricao_tutoriais": "",
+    "links_tutoriais": ""
+  },
+  "quiz": {
+    "descricao_quiz": "",
+    "conteudo_quiz": ""
+  },
+  "checklist": {
+    "descricao_checklist": "",
+    "itens_checklist": ""
+  },
+  "athena": {
+    "descricao_athena": "",
+    "conteudo_athena": ""
+  }
+}
