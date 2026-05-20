@@ -16,13 +16,12 @@
             --light-blue: #8fcad8;
             --danger: #e74c3c;
             --success: #27ae60;
-            --warning: #f39c12;
-            --dark-gray: #2c3e50;
             --light-gray: #ecf0f1;
+            --dark-gray: #2c3e50;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #f5f7fa;
             color: var(--dark-gray);
         }
@@ -32,7 +31,7 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
         }
 
         .login-box {
@@ -47,13 +46,6 @@
         .login-box h1 {
             color: var(--primary-blue);
             margin-bottom: 10px;
-            font-size: 1.8em;
-        }
-
-        .login-box p {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 0.95em;
         }
 
         .form-group {
@@ -64,7 +56,6 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: var(--dark-gray);
         }
 
         .form-group input {
@@ -73,7 +64,6 @@
             border: 2px solid var(--light-gray);
             border-radius: 6px;
             font-size: 1em;
-            transition: border-color 0.3s;
         }
 
         .form-group input:focus {
@@ -86,10 +76,8 @@
             padding: 12px;
             border: none;
             border-radius: 6px;
-            font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
         }
 
         .btn-primary {
@@ -104,13 +92,11 @@
         .error {
             color: var(--danger);
             margin-top: 10px;
-            font-size: 0.9em;
         }
 
-        /* Admin Panel */
         .admin-container {
             display: none;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -140,13 +126,9 @@
             font-weight: 600;
         }
 
-        .btn-logout:hover {
-            background: #c0392b;
-        }
-
         .tab-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 10px;
             margin-bottom: 20px;
         }
@@ -167,10 +149,6 @@
             border-color: var(--primary-blue);
         }
 
-        .tab-btn:hover {
-            border-color: var(--primary-blue);
-        }
-
         .editor-panel {
             display: none;
             background: white;
@@ -185,46 +163,108 @@
 
         .editor-panel h2 {
             color: var(--primary-blue);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             border-bottom: 3px solid var(--light-blue);
             padding-bottom: 10px;
         }
 
-        .editor-section {
-            margin-bottom: 30px;
+        .form-field {
+            margin-bottom: 25px;
             padding: 20px;
             background: #f8f9fa;
             border-radius: 6px;
             border-left: 4px solid var(--primary-blue);
         }
 
-        .editor-section label {
+        .form-field label {
             display: block;
             margin-bottom: 10px;
             font-weight: 600;
             color: var(--dark-gray);
         }
 
-        .editor-section textarea {
+        .form-field input,
+        .form-field textarea,
+        .form-field select {
             width: 100%;
-            min-height: 120px;
             padding: 12px;
             border: 2px solid var(--light-gray);
             border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95em;
-            resize: vertical;
+            font-family: inherit;
+            font-size: 1em;
         }
 
-        .editor-section textarea:focus {
+        .form-field input:focus,
+        .form-field textarea:focus {
             outline: none;
             border-color: var(--primary-blue);
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .list-items {
+            border: 2px solid var(--light-gray);
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .list-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .list-item input {
+            flex: 1;
+        }
+
+        .list-item button {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .add-item-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .timeline-item-form {
+            border: 2px solid var(--light-gray);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            background: white;
+        }
+
+        .timeline-item-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid var(--light-gray);
+            border-radius: 4px;
         }
 
         .action-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 30px;
             justify-content: flex-end;
         }
 
@@ -236,10 +276,6 @@
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
-        }
-
-        .btn-save:hover {
-            background: #229954;
         }
 
         .btn-cancel {
@@ -272,13 +308,27 @@
             display: block;
         }
 
-        .version-info {
-            background: var(--light-blue);
-            color: white;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
+        .field-info {
             font-size: 0.9em;
+            color: #999;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .value-card-form {
+            border: 2px solid var(--light-gray);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            background: white;
+        }
+
+        .value-card-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid var(--light-gray);
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -287,12 +337,12 @@
     <div class="login-container" id="loginSection">
         <div class="login-box">
             <h1>🔐 Admin Smiller</h1>
-            <p>Painel de Controle - Edição de Conteúdo</p>
+            <p>Painel de Edição de Conteúdo</p>
 
             <form id="loginForm">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" required placeholder="seu@email.com" value="isadora.guardia@smiller.com.br">
+                    <input type="email" id="email" required value="isadora.guardia@smiller.com.br">
                 </div>
 
                 <div class="form-group">
@@ -311,7 +361,7 @@
         <div class="admin-header">
             <div>
                 <h1>📝 Editor de Conteúdo</h1>
-                <p>Edite as abas do onboarding Smiller</p>
+                <p>Edite cada campo com segurança</p>
             </div>
             <button class="btn-logout" onclick="logout()">🚪 Sair</button>
         </div>
@@ -322,44 +372,138 @@
 
         <div id="editorsContainer"></div>
 
-        <div class="action-buttons" style="justify-content: space-between;">
-            <div>
-                <small style="color: #999;">Última atualização: <span id="lastUpdate">--</span></small>
-            </div>
-            <div style="display: flex; gap: 10px;">
-                <button class="btn-cancel" onclick="resetChanges()">↻ Descartar</button>
-                <button class="btn-save" onclick="saveChanges()">💾 Salvar Tudo</button>
-            </div>
+        <div class="action-buttons">
+            <button class="btn-cancel" onclick="resetChanges()">↻ Descartar</button>
+            <button class="btn-save" onclick="saveChanges()">💾 Salvar Tudo</button>
         </div>
     </div>
 
     <script>
-        // Token é guardado como variável de ambiente no Vercel
-        // Este arquivo NÃO contém o token (para segurança)
-        const REPO = 'isadoraguardia-web/smiller-onboarding';
         const ADMIN_PASSWORD = '301293';
         const ADMIN_EMAIL = 'isadora.guardia@smiller.com.br';
 
-        const TABS = [
-            { id: 'inicio', label: 'Início', title: 'Bem-vindo ao Time' },
-            { id: 'empresa', label: 'Sobre Smiller', title: 'Sobre a Empresa' },
-            { id: 'processos', label: 'Processos', title: 'Processos e Fluxos' },
-            { id: 'ferramentas', label: 'Ferramentas', title: 'Ferramentas Principais' },
-            { id: 'escalacao', label: 'Escalação', title: 'Decision Tree' },
-            { id: 'termometro', label: 'Termometro', title: 'Termometro Smiller' },
-            { id: 'mensagens', label: 'Mensagens', title: 'Book de Mensagens' },
-            { id: 'casos', label: 'Casos Reais', title: 'Casos Reais' },
-            { id: 'tutoriais', label: 'Tutoriais', title: 'Tutoriais' },
-            { id: 'quiz', label: 'Quiz', title: 'Quiz de Aprendizado' },
-            { id: 'checklist', label: 'Checklist', title: 'Checklist' },
-            { id: 'athena', label: 'Athena', title: 'Athena Saúde' }
-        ];
+        // Definição de cada aba com seus campos específicos
+        const TABS_CONFIG = {
+            inicio: {
+                label: 'Início',
+                title: 'Bem-vindo ao Time',
+                fields: [
+                    { name: 'titulo_principal', label: 'Título Principal', type: 'text', placeholder: 'Ex: Bem-vindo ao Time de Customer Experience! 👋' },
+                    { name: 'descricao', label: 'Descrição Introdutória', type: 'textarea', placeholder: 'Descreva o documento...' },
+                    { name: 'lista_items', label: 'Lista de Itens', type: 'list', help: 'Cada item será exibido com ✅' },
+                    { name: 'titulo_primeiro_dia', label: 'Título "Seu Primeiro Dia"', type: 'text' },
+                    { name: 'timeline_items', label: 'Timeline do Primeiro Dia', type: 'timeline', help: 'Preencha título e descrição de cada etapa' },
+                    { name: 'dica', label: 'Dica Final', type: 'textarea', placeholder: 'Ex: Mantenha este documento aberto...' }
+                ]
+            },
+            empresa: {
+                label: 'Sobre Smiller',
+                title: 'Sobre a Empresa',
+                fields: [
+                    { name: 'descricao_empresa', label: 'Descrição da Empresa', type: 'textarea' },
+                    { name: 'valor_1_titulo', label: '1º Valor - Título', type: 'text', placeholder: 'Vontade' },
+                    { name: 'valor_1_descricao', label: '1º Valor - Descrição', type: 'textarea' },
+                    { name: 'valor_2_titulo', label: '2º Valor - Título', type: 'text', placeholder: 'Sinergia' },
+                    { name: 'valor_2_descricao', label: '2º Valor - Descrição', type: 'textarea' },
+                    { name: 'valor_3_titulo', label: '3º Valor - Título', type: 'text', placeholder: 'Excelência' },
+                    { name: 'valor_3_descricao', label: '3º Valor - Descrição', type: 'textarea' },
+                    { name: 'valor_4_titulo', label: '4º Valor - Título', type: 'text', placeholder: 'Dinamismo' },
+                    { name: 'valor_4_descricao', label: '4º Valor - Descrição', type: 'textarea' },
+                    { name: 'valor_5_titulo', label: '5º Valor - Título', type: 'text', placeholder: 'Disciplina' },
+                    { name: 'valor_5_descricao', label: '5º Valor - Descrição', type: 'textarea' },
+                    { name: 'papel_cx', label: 'Papel do CX (Box de Alerta)', type: 'textarea' },
+                    { name: 'responsabilidades', label: 'Responsabilidades Principais', type: 'list' },
+                    { name: 'iniciativas', label: 'Iniciativas Atuais', type: 'textarea' }
+                ]
+            },
+            processos: {
+                label: 'Processos',
+                title: 'Processos e Fluxos',
+                fields: [
+                    { name: 'descricao_processos', label: 'Descrição geral dos processos', type: 'textarea' },
+                    { name: 'processos_items', label: 'Processos (um por linha)', type: 'list' }
+                ]
+            },
+            ferramentas: {
+                label: 'Ferramentas',
+                title: 'Ferramentas Principais',
+                fields: [
+                    { name: 'descricao_ferramentas', label: 'Descrição', type: 'textarea' },
+                    { name: 'ferramentas_items', label: 'Ferramentas', type: 'list' }
+                ]
+            },
+            escalacao: {
+                label: 'Escalação',
+                title: 'Decision Tree de Escalação',
+                fields: [
+                    { name: 'titulo_decision_tree', label: 'Título da Decision Tree', type: 'text' },
+                    { name: 'regra_ouro', label: 'Regra de Ouro', type: 'textarea' },
+                    { name: 'conteudo_principal', label: 'Conteúdo Principal (HTML ou Texto)', type: 'textarea', help: 'Você pode colar imagens ou HTML aqui' }
+                ]
+            },
+            termometro: {
+                label: 'Termometro',
+                title: 'Termometro Smiller',
+                fields: [
+                    { name: 'titulo_termometro', label: 'Título', type: 'text' },
+                    { name: 'descricao_termometro', label: 'Descrição', type: 'textarea' },
+                    { name: 'url_google_slides', label: 'URL Google Slides', type: 'text', placeholder: 'https://docs.google.com/presentation/...' }
+                ]
+            },
+            mensagens: {
+                label: 'Mensagens',
+                title: 'Book de Mensagens',
+                fields: [
+                    { name: 'descricao_mensagens', label: 'Descrição do Book', type: 'textarea' },
+                    { name: 'templates', label: 'Templates de Mensagem', type: 'textarea', help: 'Um template por parágrafo/seção' }
+                ]
+            },
+            casos: {
+                label: 'Casos Reais',
+                title: 'Casos Reais',
+                fields: [
+                    { name: 'introducao_casos', label: 'Introdução', type: 'textarea' },
+                    { name: 'casos_descricao', label: 'Descrição dos Casos', type: 'textarea' }
+                ]
+            },
+            tutoriais: {
+                label: 'Tutoriais',
+                title: 'Tutoriais',
+                fields: [
+                    { name: 'descricao_tutoriais', label: 'Descrição', type: 'textarea' },
+                    { name: 'links_tutoriais', label: 'Links dos Tutoriais', type: 'list', help: 'Cole os URLs dos tutoriais' }
+                ]
+            },
+            quiz: {
+                label: 'Quiz',
+                title: 'Quiz de Aprendizado',
+                fields: [
+                    { name: 'descricao_quiz', label: 'Descrição do Quiz', type: 'textarea' },
+                    { name: 'conteudo_quiz', label: 'Conteúdo do Quiz (HTML)', type: 'textarea', help: 'Preencha com as perguntas em HTML' }
+                ]
+            },
+            checklist: {
+                label: 'Checklist',
+                title: 'Checklist de Onboarding',
+                fields: [
+                    { name: 'descricao_checklist', label: 'Descrição', type: 'textarea' },
+                    { name: 'itens_checklist', label: 'Itens do Checklist', type: 'list' }
+                ]
+            },
+            athena: {
+                label: 'Athena',
+                title: 'Athena Saúde',
+                fields: [
+                    { name: 'descricao_athena', label: 'Descrição', type: 'textarea' },
+                    { name: 'conteudo_athena', label: 'Conteúdo Principal', type: 'textarea' }
+                ]
+            }
+        };
 
         let contentData = {};
-        let hasChanges = false;
 
         // Login
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -367,154 +511,183 @@
             if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
                 localStorage.setItem('adminLogin', 'true');
                 showAdmin();
-                loadContent();
+                loadAndRenderEditor();
             } else {
                 document.getElementById('loginError').textContent = 'Email ou senha incorretos';
             }
         });
 
-        async function loadContent() {
-            try {
-                // Tentar carregar do GitHub via API pública (sem autenticação para leitura)
-                const response = await fetch(`https://raw.githubusercontent.com/${REPO}/main/content.json`);
+        async function loadAndRenderEditor() {
+            // Initialize contentData with empty values first
+            Object.keys(TABS_CONFIG).forEach(tabId => {
+                contentData[tabId] = {};
+                TABS_CONFIG[tabId].fields.forEach(field => {
+                    contentData[tabId][field.name] = '';
+                });
+            });
 
+            // Try to load existing content from GitHub
+            try {
+                const response = await fetch('/api/loadContent');
                 if (response.ok) {
-                    contentData = await response.json();
-                    // Get last modified time
-                    try {
-                        const commitResponse = await fetch(`https://api.github.com/repos/${REPO}/commits?path=content.json&per_page=1`);
-                        if (commitResponse.ok) {
-                            const commits = await commitResponse.json();
-                            if (commits.length > 0) {
-                                document.getElementById('lastUpdate').textContent = new Date(commits[0].commit.committer.date).toLocaleString('pt-BR');
-                            }
+                    const existingContent = await response.json();
+
+                    // Merge existing content into contentData
+                    Object.keys(existingContent).forEach(tabId => {
+                        if (contentData[tabId]) {
+                            Object.keys(existingContent[tabId]).forEach(fieldName => {
+                                let value = existingContent[tabId][fieldName];
+
+                                // Handle different data types
+                                if (typeof value === 'object') {
+                                    // If it's an object/array, convert to appropriate format
+                                    if (Array.isArray(value)) {
+                                        // For lists stored as arrays
+                                        contentData[tabId][fieldName] = value.join('\n');
+                                    } else {
+                                        // For timeline items stored as objects
+                                        contentData[tabId][fieldName] = JSON.stringify(value);
+                                    }
+                                } else {
+                                    // If it's a string, keep as is
+                                    contentData[tabId][fieldName] = value || '';
+                                }
+                            });
                         }
-                    } catch (e) {
-                        console.log('Could not get commit date');
-                    }
-                } else {
-                    contentData = {};
-                    TABS.forEach(tab => {
-                        contentData[tab.id] = { content: '(Conteúdo ainda não foi criado. Comece a editar e salve.)' };
                     });
                 }
-
-                renderEditors();
             } catch (error) {
-                console.error('Erro ao carregar conteúdo:', error);
-                showStatus('Erro ao carregar conteúdo: ' + error.message, 'error');
+                console.log('Note: Could not load existing content, starting fresh');
             }
+
+            renderTabs();
         }
 
-        function renderEditors() {
-            const container = document.getElementById('editorsContainer');
+        function renderTabs() {
             const tabButtons = document.getElementById('tabButtons');
+            const container = document.getElementById('editorsContainer');
 
-            container.innerHTML = '';
             tabButtons.innerHTML = '';
+            container.innerHTML = '';
 
-            TABS.forEach((tab, index) => {
+            let isFirst = true;
+            Object.keys(TABS_CONFIG).forEach(tabId => {
+                const config = TABS_CONFIG[tabId];
+
                 // Create tab button
                 const btn = document.createElement('button');
-                btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
-                btn.textContent = tab.label;
-                btn.onclick = () => switchTab(tab.id);
+                btn.className = `tab-btn ${isFirst ? 'active' : ''}`;
+                btn.textContent = config.label;
+                btn.onclick = () => switchTab(tabId);
                 tabButtons.appendChild(btn);
 
                 // Create editor panel
                 const panel = document.createElement('div');
-                panel.id = `panel-${tab.id}`;
-                panel.className = `editor-panel ${index === 0 ? 'active' : ''}`;
-                panel.innerHTML = `
-                    <h2>${tab.title}</h2>
-                    <div class="editor-section">
-                        <label for="editor-${tab.id}">Conteúdo HTML da aba "${tab.label}"</label>
-                        <textarea id="editor-${tab.id}" placeholder="Digite o conteúdo HTML aqui..." onchange="markAsChanged()">${contentData[tab.id]?.content || ''}</textarea>
-                        <small style="color: #999; display: block; margin-top: 10px;">💡 Você pode usar HTML, Markdown ou texto simples. Use tags como &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;strong&gt;, etc.</small>
-                    </div>
-                `;
+                panel.id = `panel-${tabId}`;
+                panel.className = `editor-panel ${isFirst ? 'active' : ''}`;
+
+                let html = `<h2>${config.title}</h2>`;
+
+                config.fields.forEach(field => {
+                    html += renderField(tabId, field);
+                });
+
+                panel.innerHTML = html;
                 container.appendChild(panel);
+
+                isFirst = false;
             });
         }
 
+        function renderField(tabId, field) {
+            const value = contentData[tabId][field.name] || '';
+
+            let html = `<div class="form-field">
+                <label for="${tabId}_${field.name}">${field.label}</label>`;
+
+            if (field.type === 'text') {
+                html += `<input type="text" id="${tabId}_${field.name}" placeholder="${field.placeholder || ''}" value="${value}">`;
+            } else if (field.type === 'textarea') {
+                html += `<textarea id="${tabId}_${field.name}" placeholder="${field.placeholder || ''}">${value}</textarea>`;
+            } else if (field.type === 'list') {
+                const items = value ? value.split('\n') : [];
+                html += `<div class="list-items">`;
+                items.forEach((item, idx) => {
+                    if (item.trim()) {
+                        html += `<div class="list-item">
+                            <input type="text" value="${item}" data-tabid="${tabId}" data-fieldname="${field.name}" data-idx="${idx}">
+                            <button type="button" onclick="removeListItem(this)">✕</button>
+                        </div>`;
+                    }
+                });
+                html += `</div>
+                <button class="add-item-btn" type="button" onclick="addListItem('${tabId}', '${field.name}')">+ Adicionar Item</button>`;
+            } else if (field.type === 'timeline') {
+                const items = value ? JSON.parse(value) : [];
+                html += `<div>`;
+                items.forEach((item, idx) => {
+                    html += `<div class="timeline-item-form">
+                        <input type="text" placeholder="Título" value="${item.title || ''}" data-tabid="${tabId}" data-field="${field.name}" data-idx="${idx}" data-prop="title">
+                        <input type="text" placeholder="Descrição" value="${item.desc || ''}" data-tabid="${tabId}" data-field="${field.name}" data-idx="${idx}" data-prop="desc">
+                        <button type="button" onclick="removeTimelineItem(this)">✕ Remover</button>
+                    </div>`;
+                });
+                html += `</div>
+                <button class="add-item-btn" type="button" onclick="addTimelineItem('${tabId}', '${field.name}')">+ Adicionar Etapa</button>`;
+            }
+
+            if (field.help) {
+                html += `<div class="field-info">💡 ${field.help}</div>`;
+            }
+
+            html += `</div>`;
+            return html;
+        }
+
         function switchTab(tabId) {
-            // Hide all panels
             document.querySelectorAll('.editor-panel').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-            // Show selected
             document.getElementById(`panel-${tabId}`).classList.add('active');
             event.target.classList.add('active');
         }
 
-        function markAsChanged() {
-            hasChanges = true;
+        function addListItem(tabId, fieldName) {
+            const textarea = document.querySelector(`[data-tabid="${tabId}"][data-fieldname="${fieldName}"]`);
+            if (textarea) {
+                const newItem = prompt('Digite o novo item:');
+                if (newItem) {
+                    const items = contentData[tabId][fieldName] ? contentData[tabId][fieldName].split('\n') : [];
+                    items.push(newItem);
+                    contentData[tabId][fieldName] = items.join('\n');
+                    renderTabs();
+                }
+            }
+        }
+
+        function removeListItem(btn) {
+            btn.parentElement.remove();
+        }
+
+        function addTimelineItem(tabId, fieldName) {
+            const items = contentData[tabId][fieldName] ? JSON.parse(contentData[tabId][fieldName]) : [];
+            items.push({ title: '', desc: '' });
+            contentData[tabId][fieldName] = JSON.stringify(items);
+            renderTabs();
+        }
+
+        function removeTimelineItem(btn) {
+            btn.parentElement.remove();
         }
 
         async function saveChanges() {
-            // Collect all changes
-            TABS.forEach(tab => {
-                const editor = document.getElementById(`editor-${tab.id}`);
-                contentData[tab.id] = { content: editor.value };
-            });
-
-            try {
-                // Chamar a API Vercel para salvar (token está armazenado de forma segura no servidor)
-                const response = await fetch('/api/saveContent', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ content: contentData })
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    showStatus('✅ Conteúdo salvo com sucesso! O site será atualizado em poucos segundos.', 'success');
-                    hasChanges = false;
-                    // Reload to show latest update time
-                    setTimeout(() => loadContent(), 2000);
-                } else {
-                    throw new Error(result.error || 'Erro ao salvar');
+            // Collect all values from inputs
+            document.querySelectorAll('[id]').forEach(input => {
+                const match = input.id.match(/^(.+?)_(.+)$/);
+                if (match) {
+                    const [, tabId, fieldName] = match;
+                    if (contentData[tabId]) {
+                        contentData[tabId][fieldName] = input.value || input.textContent;
+                    }
                 }
-            } catch (error) {
-                console.error('Erro:', error);
-                showStatus('❌ Erro ao salvar: ' + error.message, 'error');
-            }
-        }
-
-        function resetChanges() {
-            if (confirm('Descartar todas as mudanças?')) {
-                loadContent();
-                showStatus('Mudanças descartadas', 'success');
-            }
-        }
-
-        function showStatus(message, type) {
-            const statusEl = document.getElementById('statusMessage');
-            statusEl.textContent = message;
-            statusEl.className = `status-message ${type}`;
-            setTimeout(() => {
-                statusEl.classList.remove('success', 'error');
-            }, 5000);
-        }
-
-        function showAdmin() {
-            document.getElementById('loginSection').style.display = 'none';
-            document.getElementById('adminSection').style.display = 'block';
-        }
-
-        function logout() {
-            localStorage.removeItem('adminLogin');
-            location.reload();
-        }
-
-        // Check login on load
-        if (localStorage.getItem('adminLogin')) {
-            showAdmin();
-            loadContent();
-        }
-    </script>
-</body>
-</html>                                                                                                                                                                                                                                                                                                                                                                                                                             
+          
