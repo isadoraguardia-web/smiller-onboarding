@@ -448,48 +448,31 @@
                             </div>
                         `;
                     } else {
-                        // String/número/boolean: mostrar como textarea ou input
-                        const isLongText = fieldValue && fieldValue.toString().length > 100;
-                        if (isLongText) {
+                        // Detectar se é URL de imagem
+                        const isImageUrl = fieldValue && fieldValue.toString().match(/\.(png|jpg|jpeg|gif|webp)(\?|$)/i);
+
+                        if (isImageUrl) {
+                            // URL de imagem: mostrar preview + input para editar URL
                             inputHTML = `
                                 <div class="editor-section">
-                                    <label for="${fieldId}"><strong>${fieldName}</strong></label>
-                                    <textarea id="${fieldId}" placeholder="Digite aqui..." onchange="markAsChanged()">${fieldValue || ''}</textarea>
+                                    <label for="${fieldId}"><strong>${fieldName}</strong> (URL da Imagem)</label>
+                                    <div style="margin-bottom: 10px; padding: 10px; background: white; border-radius: 6px; border: 1px solid var(--light-gray);">
+                                        <img id="preview-${fieldId}" src="${fieldValue}" style="max-width: 100%; max-height: 300px; border-radius: 4px; object-fit: contain;">
+                                    </div>
+                                    <input type="text" id="${fieldId}" value="${fieldValue || ''}" onchange="markAsChanged(); updateImagePreview('${fieldId}')" placeholder="https://..." style="width: 100%; padding: 12px; border: 2px solid var(--light-gray); border-radius: 6px; font-size: 0.95em;">
+                                    <small style="color: #999;">URL completa da imagem (PNG, JPG, etc.)</small>
                                 </div>
                             `;
                         } else {
-                            inputHTML = `
-                                <div class="editor-section">
-                                    <label for="${fieldId}"><strong>${fieldName}</strong></label>
-                                    <input type="text" id="${fieldId}" value="${fieldValue || ''}" onchange="markAsChanged()" style="width: 100%; padding: 12px; border: 2px solid var(--light-gray); border-radius: 6px; font-size: 1em;">
-                                </div>
-                            `;
-                        }
-                    }
-                    fieldsHTML += inputHTML;
-                });
-
-                if (Object.keys(tabData).length === 0) {
-                    fieldsHTML += `<div style="padding: 20px; background: #fff3cd; border-radius: 6px; color: #856404;">⚠️ Nenhum conteúdo ainda. Comece a digitar abaixo.</div>`;
-                }
-
-                panel.innerHTML = fieldsHTML;
-                container.appendChild(panel);
-            });
-        }
-
-        function switchTab(tabId) {
-            // Hide all panels
-            document.querySelectorAll('.editor-panel').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-
-            // Show selected
-            document.getElementById(`panel-${tabId}`).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        function markAsChanged() {
-            hasChanges = true;
-        }
-
-        async functi
+                            // String/número/boolean: mostrar como textarea ou input
+                            const isLongText = fieldValue && fieldValue.toString().length > 100;
+                            if (isLongText) {
+                                inputHTML = `
+                                    <div class="editor-section">
+                                        <label for="${fieldId}"><strong>${fieldName}</strong></label>
+                                        <textarea id="${fieldId}" placeholder="Digite aqui..." onchange="markAsChanged()">${fieldValue || ''}</textarea>
+                                    </div>
+                                `;
+                            } else {
+                                inputHTML = `
+                       
