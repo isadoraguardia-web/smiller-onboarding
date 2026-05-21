@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "public": true,
+    "functions": {
+          "api/**/*.js": {
+                  "runtime": "nodejs20.x"
+          }
+    },
+    "routes": [
+          {
+                  "src": "/api/(.*)",
+                  "dest": "/api/$1"
+          },
+          {
+                  "src": "/(.*)",
+                  "dest": "/onboarding_smiller_cx_editable.html"
+          }
+    ]
+}
