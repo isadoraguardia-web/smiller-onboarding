@@ -1,7 +1,7 @@
 {
   "inicio": {
     "titulo_principal": "Bem-vindo ao Time de Customer Experience! 👋",
-    "descricao": "Este documento é seu guia de onboarding. Aqui você encontrará tudo que precisa saber para começar sua jornada na Smiller.",
+    "descricao": "Este documento é seu guia de onboarding. Aqui você encontrará tudo o que precisa saber para começar sua jornada na Smiller.",
     "lista_items": [
       "Conheça a cultura e valores da empresa",
       "Entenda seus papéis e responsabilidades",
@@ -13,7 +13,7 @@
       {
         "tempo": "09:00",
         "titulo": "Chegada e Recepção",
-        "descricao": "Chegue no escritório."
+        "descricao": "Chegue ao escritório."
       },
       {
         "tempo": "09:30",
@@ -56,7 +56,7 @@
       "Identificar pontos de dor e oportunidades",
       "Desenhar soluções de experiência",
       "Conduzir pesquisas e análises",
-      "Implementar melhorias junto a times internas e clientes",
+      "Implementar melhorias junto a times internos e clientes",
       "Medir e reportar impacto das iniciativas"
     ],
     "iniciativas": "Atualmente estamos focando em: transformação digital de clientes, otimização de NPS e automatização de processos de suporte."
@@ -68,7 +68,7 @@
       "Pesquisa de Experiência: design de pesquisa, coleta de dados, análise e recomendações",
       "Desenho de Solução: workshops, prototipagem, validação com stakeholders",
       "Implementação: planejamento, execução, acompanhamento e ajustes",
-      "Gestão de Relacionamento: reuniões regulares, reportes, revisão de progresso",
+      "Gestão de Relacionamento: reuniões regulares, relatórios, revisão de progresso",
       "Suporte e Evolução: acompanhamento pós-implementação e melhorias contínuas"
     ]
   },
