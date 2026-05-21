@@ -146,9 +146,13 @@
 
         .tab-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 10px;
             margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .tab-btn {
@@ -159,6 +163,7 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            font-size: 0.9em;
         }
 
         .tab-btn.active {
@@ -205,20 +210,40 @@
             color: var(--dark-gray);
         }
 
+        .editor-section input,
         .editor-section textarea {
             width: 100%;
-            min-height: 120px;
             padding: 12px;
             border: 2px solid var(--light-gray);
             border-radius: 6px;
             font-family: 'Courier New', monospace;
             font-size: 0.95em;
+        }
+
+        .editor-section textarea {
+            min-height: 120px;
             resize: vertical;
         }
 
+        .editor-section input:focus,
         .editor-section textarea:focus {
             outline: none;
             border-color: var(--primary-blue);
+        }
+
+        .image-preview {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 4px;
+            object-fit: contain;
         }
 
         .action-buttons {
@@ -272,22 +297,19 @@
             display: block;
         }
 
-        .version-info {
-            background: var(--light-blue);
-            color: white;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            font-size: 0.9em;
+        small {
+            color: #999;
+            display: block;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
-    <!-- Login -->
+    <!-- LOGIN FORM - APENAS EMAIL, SEM SENHA -->
     <div class="login-container" id="loginSection">
         <div class="login-box">
             <h1>🔐 Admin Smiller</h1>
-            <p>Painel de Controle - Edição de Conteúdo</p>
+            <p>Painel de Edição de Conteúdo</p>
 
             <form id="loginForm">
                 <div class="form-group">
@@ -301,7 +323,7 @@
         </div>
     </div>
 
-    <!-- Admin Panel -->
+    <!-- ADMIN PANEL -->
     <div class="admin-container" id="adminSection">
         <div class="admin-header">
             <div>
@@ -329,30 +351,28 @@
     </div>
 
     <script>
-        // Token é guardado como variável de ambiente no Vercel
-        // Este arquivo NÃO contém o token (para segurança)
         const REPO = 'isadoraguardia-web/smiller-onboarding';
         const ADMIN_EMAIL = 'isadora.guardia@smiller.com.br';
 
         const TABS = [
-            { id: 'inicio', label: 'Início', title: 'Bem-vindo ao Time' },
-            { id: 'empresa', label: 'Sobre Smiller', title: 'Sobre a Empresa' },
-            { id: 'processos', label: 'Processos', title: 'Processos e Fluxos' },
-            { id: 'ferramentas', label: 'Ferramentas', title: 'Ferramentas Principais' },
-            { id: 'escalacao', label: 'Escalação', title: 'Decision Tree' },
-            { id: 'termometro', label: 'Termometro', title: 'Termometro Smiller' },
-            { id: 'mensagens', label: 'Mensagens', title: 'Book de Mensagens' },
-            { id: 'casos', label: 'Casos Reais', title: 'Casos Reais' },
-            { id: 'tutoriais', label: 'Tutoriais', title: 'Tutoriais' },
-            { id: 'quiz', label: 'Quiz', title: 'Quiz de Aprendizado' },
-            { id: 'checklist', label: 'Checklist', title: 'Checklist' },
-            { id: 'athena', label: 'Athena', title: 'Athena Saúde' }
+            { id: 'inicio', label: 'Início' },
+            { id: 'empresa', label: 'Sobre Smiller' },
+            { id: 'processos', label: 'Processos' },
+            { id: 'ferramentas', label: 'Ferramentas' },
+            { id: 'escalacao', label: 'Escalação' },
+            { id: 'termometro', label: 'Termometro' },
+            { id: 'mensagens', label: 'Mensagens' },
+            { id: 'casos', label: 'Casos Reais' },
+            { id: 'tutoriais', label: 'Tutoriais' },
+            { id: 'quiz', label: 'Quiz' },
+            { id: 'checklist', label: 'Checklist' },
+            { id: 'athena', label: 'Athena' }
         ];
 
         let contentData = {};
         let hasChanges = false;
 
-        // Login
+        // LOGIN - APENAS EMAIL, SEM VERIFICAÇÃO DE SENHA
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
@@ -366,36 +386,31 @@
             }
         });
 
+        function showAdmin() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('adminSection').style.display = 'block';
+        }
+
+        function hideAdmin() {
+            document.getElementById('loginSection').style.display = 'flex';
+            document.getElementById('adminSection').style.display = 'none';
+        }
+
         async function loadContent() {
             try {
-                // Tentar carregar do GitHub via API pública (sem autenticação para leitura)
                 const response = await fetch(`https://raw.githubusercontent.com/${REPO}/main/content.json`);
-
                 if (response.ok) {
                     contentData = await response.json();
-                    // Get last modified time
-                    try {
-                        const commitResponse = await fetch(`https://api.github.com/repos/${REPO}/commits?path=content.json&per_page=1`);
-                        if (commitResponse.ok) {
-                            const commits = await commitResponse.json();
-                            if (commits.length > 0) {
-                                document.getElementById('lastUpdate').textContent = new Date(commits[0].commit.committer.date).toLocaleString('pt-BR');
-                            }
-                        }
-                    } catch (e) {
-                        console.log('Could not get commit date');
-                    }
                 } else {
                     contentData = {};
                     TABS.forEach(tab => {
-                        contentData[tab.id] = { content: '(Conteúdo ainda não foi criado. Comece a editar e salve.)' };
+                        contentData[tab.id] = { descricao: 'Conteúdo vazio. Comece a editar aqui.' };
                     });
                 }
-
                 renderEditors();
             } catch (error) {
-                console.error('Erro ao carregar conteúdo:', error);
-                showStatus('Erro ao carregar conteúdo: ' + error.message, 'error');
+                console.error('Erro ao carregar:', error);
+                showStatus('Erro ao carregar conteúdo', 'error');
             }
         }
 
@@ -407,72 +422,170 @@
             tabButtons.innerHTML = '';
 
             TABS.forEach((tab, index) => {
-                // Create tab button
+                // Button
                 const btn = document.createElement('button');
                 btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
                 btn.textContent = tab.label;
                 btn.onclick = () => switchTab(tab.id);
                 tabButtons.appendChild(btn);
 
-                // Create editor panel
+                // Panel
                 const panel = document.createElement('div');
                 panel.id = `panel-${tab.id}`;
                 panel.className = `editor-panel ${index === 0 ? 'active' : ''}`;
 
                 const tabData = contentData[tab.id] || {};
-                let fieldsHTML = `<h2>${tab.title}</h2>`;
+                let fieldsHTML = `<h2>${tab.label}</h2>`;
 
-                // Renderizar todos os campos do objeto
                 Object.keys(tabData).forEach(fieldName => {
                     const fieldValue = tabData[fieldName];
-                    const fieldId = `editor-${tab.id}-${fieldName}`;
+                    const fieldId = `field-${tab.id}-${fieldName}`;
                     let inputHTML = '';
 
-                    // Determinar tipo de campo baseado no conteúdo
                     if (Array.isArray(fieldValue)) {
-                        // Array: mostrar como textarea com quebras de linha
                         inputHTML = `
                             <div class="editor-section">
-                                <label for="${fieldId}"><strong>${fieldName}</strong> (lista)</label>
-                                <textarea id="${fieldId}" placeholder="Um item por linha..." onchange="markAsChanged()">${fieldValue.join('\n')}</textarea>
-                                <small style="color: #999;">Um item por linha</small>
+                                <label for="${fieldId}"><strong>${fieldName}</strong></label>
+                                <textarea id="${fieldId}" onchange="markAsChanged()">${fieldValue.join('\n')}</textarea>
+                                <small>Um item por linha</small>
                             </div>
                         `;
                     } else if (typeof fieldValue === 'object' && fieldValue !== null) {
-                        // Objeto: mostrar como JSON
                         inputHTML = `
                             <div class="editor-section">
-                                <label for="${fieldId}"><strong>${fieldName}</strong> (JSON)</label>
-                                <textarea id="${fieldId}" placeholder="JSON..." onchange="markAsChanged()" style="font-size: 0.85em;">${JSON.stringify(fieldValue, null, 2)}</textarea>
-                                <small style="color: #999;">Conteúdo JSON - não modifique a estrutura</small>
+                                <label for="${fieldId}"><strong>${fieldName}</strong></label>
+                                <textarea id="${fieldId}" onchange="markAsChanged()" style="font-size: 0.85em;">${JSON.stringify(fieldValue, null, 2)}</textarea>
+                                <small>Conteúdo JSON</small>
                             </div>
                         `;
                     } else {
-                        // Detectar se é URL de imagem
                         const isImageUrl = fieldValue && fieldValue.toString().match(/\.(png|jpg|jpeg|gif|webp)(\?|$)/i);
 
                         if (isImageUrl) {
-                            // URL de imagem: mostrar preview + input para editar URL
                             inputHTML = `
                                 <div class="editor-section">
-                                    <label for="${fieldId}"><strong>${fieldName}</strong> (URL da Imagem)</label>
-                                    <div style="margin-bottom: 10px; padding: 10px; background: white; border-radius: 6px; border: 1px solid var(--light-gray);">
-                                        <img id="preview-${fieldId}" src="${fieldValue}" style="max-width: 100%; max-height: 300px; border-radius: 4px; object-fit: contain;">
+                                    <label for="${fieldId}"><strong>${fieldName}</strong></label>
+                                    <div class="image-preview">
+                                        <img id="preview-${fieldId}" src="${fieldValue}" alt="Preview">
                                     </div>
-                                    <input type="text" id="${fieldId}" value="${fieldValue || ''}" onchange="markAsChanged(); updateImagePreview('${fieldId}')" placeholder="https://..." style="width: 100%; padding: 12px; border: 2px solid var(--light-gray); border-radius: 6px; font-size: 0.95em;">
-                                    <small style="color: #999;">URL completa da imagem (PNG, JPG, etc.)</small>
+                                    <input type="text" id="${fieldId}" value="${fieldValue}" onchange="markAsChanged(); updateImagePreview('${fieldId}')" placeholder="https://...">
+                                    <small>URL da imagem (PNG, JPG, etc.)</small>
                                 </div>
                             `;
                         } else {
-                            // String/número/boolean: mostrar como textarea ou input
                             const isLongText = fieldValue && fieldValue.toString().length > 100;
                             if (isLongText) {
                                 inputHTML = `
                                     <div class="editor-section">
                                         <label for="${fieldId}"><strong>${fieldName}</strong></label>
-                                        <textarea id="${fieldId}" placeholder="Digite aqui..." onchange="markAsChanged()">${fieldValue || ''}</textarea>
+                                        <textarea id="${fieldId}" onchange="markAsChanged()">${fieldValue || ''}</textarea>
                                     </div>
                                 `;
                             } else {
                                 inputHTML = `
-                       // Force rebuild at Thu May 21 15:09:57 UTC 2026
+                                    <div class="editor-section">
+                                        <label for="${fieldId}"><strong>${fieldName}</strong></label>
+                                        <input type="text" id="${fieldId}" value="${fieldValue || ''}" onchange="markAsChanged()" placeholder="Digite aqui...">
+                                    </div>
+                                `;
+                            }
+                        }
+                    }
+
+                    fieldsHTML += inputHTML;
+                });
+
+                panel.innerHTML = fieldsHTML;
+                container.appendChild(panel);
+            });
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.editor-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`panel-${tabId}`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function markAsChanged() {
+            hasChanges = true;
+        }
+
+        function updateImagePreview(fieldId) {
+            const input = document.getElementById(fieldId);
+            const preview = document.getElementById(`preview-${fieldId}`);
+            if (preview) {
+                preview.src = input.value;
+            }
+        }
+
+        async function saveChanges() {
+            const newContent = {};
+            TABS.forEach(tab => {
+                newContent[tab.id] = {};
+                Object.keys(contentData[tab.id] || {}).forEach(fieldName => {
+                    const fieldId = `field-${tab.id}-${fieldName}`;
+                    const element = document.getElementById(fieldId);
+                    if (element) {
+                        const value = element.value;
+                        const original = contentData[tab.id][fieldName];
+                        
+                        if (Array.isArray(original)) {
+                            newContent[tab.id][fieldName] = value.split('\n').filter(v => v.trim());
+                        } else if (typeof original === 'object' && original !== null) {
+                            try {
+                                newContent[tab.id][fieldName] = JSON.parse(value);
+                            } catch (e) {
+                                newContent[tab.id][fieldName] = value;
+                            }
+                        } else {
+                            newContent[tab.id][fieldName] = value;
+                        }
+                    }
+                });
+            });
+
+            try {
+                const response = await fetch('/api/saveContent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ content: newContent })
+                });
+
+                if (response.ok) {
+                    showStatus('✅ Conteúdo salvo com sucesso!', 'success');
+                    hasChanges = false;
+                    contentData = newContent;
+                } else {
+                    showStatus('❌ Erro ao salvar', 'error');
+                }
+            } catch (error) {
+                showStatus('❌ Erro: ' + error.message, 'error');
+            }
+        }
+
+        function resetChanges() {
+            location.reload();
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLogin');
+            hideAdmin();
+            document.getElementById('loginForm').reset();
+        }
+
+        function showStatus(message, type) {
+            const el = document.getElementById('statusMessage');
+            el.textContent = message;
+            el.className = `status-message ${type}`;
+            setTimeout(() => el.className = 'status-message', 5000);
+        }
+
+        // Carregar ao abrir página
+        if (localStorage.getItem('adminLogin')) {
+            showAdmin();
+            loadContent();
+        }
+    </script>
+</body>
+</html>
