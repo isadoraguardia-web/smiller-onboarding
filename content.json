@@ -88,7 +88,7 @@
     "titulo": "Escalação de Conflitos",
     "descricao": "Caso você enfrente uma situação delicada, siga este fluxo:"
   },
-  "termometro": {
+  "termômetro": {
     "titulo": "Termômetro de Engajamento",
     "descricao": "Fluxo de Escalação de Clientes",
     "imagem_url": "https://raw.githubusercontent.com/isadoraguardia-web/smiller-onboarding/main/assets/termometro-clientes.svg",
