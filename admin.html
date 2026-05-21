@@ -425,96 +425,66 @@
                 const panel = document.createElement('div');
                 panel.id = `panel-${tab.id}`;
                 panel.className = `editor-panel ${index === 0 ? 'active' : ''}`;
-                panel.innerHTML = `
-                    <h2>${tab.title}</h2>
-                    <div class="editor-section">
-                        <label for="editor-${tab.id}">Conteúdo HTML da aba "${tab.label}"</label>
-                        <textarea id="editor-${tab.id}" placeholder="Digite o conteúdo HTML aqui..." onchange="markAsChanged()">${contentData[tab.id]?.content || ''}</textarea>
-                        <small style="color: #999; display: block; margin-top: 10px;">💡 Você pode usar HTML, Markdown ou texto simples. Use tags como &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;strong&gt;, etc.</small>
-                    </div>
-                `;
+
+                const tabData = contentData[tab.id] || {};
+                let fieldsHTML = `<h2>${tab.title}</h2>`;
+
+                // Renderizar todos os campos do objeto
+                Object.keys(tabData).forEach(fieldName => {
+                    const fieldValue = tabData[fieldName];
+                    const fieldId = `editor-${tab.id}-${fieldName}`;
+                    let inputHTML = '';
+
+                    // Determinar tipo de campo baseado no conteúdo
+                    if (Array.isArray(fieldValue)) {
+                        // Array: mostrar como textarea com quebras de linha
+                        inputHTML = `
+                            <div class="editor-section">
+                                <label for="${fieldId}"><strong>${fieldName}</strong> (lista)</label>
+                                <textarea id="${fieldId}" placeholder="Um item por linha..." onchange="markAsChanged()">${fieldValue.join('\n')}</textarea>
+                                <small style="color: #999;">Um item por linha</small>
+                            </div>
+                        `;
+                    } else if (typeof fieldValue === 'object' && fieldValue !== null) {
+                        // Objeto: mostrar como JSON
+                        inputHTML = `
+                            <div class="editor-section">
+                                <label for="${fieldId}"><strong>${fieldName}</strong> (JSON)</label>
+                                <textarea id="${fieldId}" placeholder="JSON..." onchange="markAsChanged()" style="font-size: 0.85em;">${JSON.stringify(fieldValue, null, 2)}</textarea>
+                                <small style="color: #999;">Conteúdo JSON - não modifique a estrutura</small>
+                            </div>
+                        `;
+                    } else {
+                        // String/número/boolean: mostrar como textarea ou input
+                        const isLongText = fieldValue && fieldValue.toString().length > 100;
+                        if (isLongText) {
+                            inputHTML = `
+                                <div class="editor-section">
+                                    <label for="${fieldId}"><strong>${fieldName}</strong></label>
+                                    <textarea id="${fieldId}" placeholder="Digite aqui..." onchange="markAsChanged()">${fieldValue || ''}</textarea>
+                                </div>
+                            `;
+                        } else {
+                            inputHTML = `
+                                <div class="editor-section">
+                                    <label for="${fieldId}"><strong>${fieldName}</strong></label>
+                                    <input type="text" id="${fieldId}" value="${fieldValue || ''}" onchange="markAsChanged()" style="width: 100%; padding: 12px; border: 2px solid var(--light-gray); border-radius: 6px; font-size: 1em;">
+                                </div>
+                            `;
+                        }
+                    }
+                    fieldsHTML += inputHTML;
+                });
+
+                if (Object.keys(tabData).length === 0) {
+                    fieldsHTML += `<div style="padding: 20px; background: #fff3cd; border-radius: 6px; color: #856404;">⚠️ Nenhum conteúdo ainda. Comece a digitar abaixo.</div>`;
+                }
+
+                panel.innerHTML = fieldsHTML;
                 container.appendChild(panel);
             });
         }
 
         function switchTab(tabId) {
             // Hide all panels
-            document.querySelectorAll('.editor-panel').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-
-            // Show selected
-            document.getElementById(`panel-${tabId}`).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        function markAsChanged() {
-            hasChanges = true;
-        }
-
-        async function saveChanges() {
-            // Collect all changes
-            TABS.forEach(tab => {
-                const editor = document.getElementById(`editor-${tab.id}`);
-                contentData[tab.id] = { content: editor.value };
-            });
-
-            try {
-                // Chamar a API Vercel para salvar (token está armazenado de forma segura no servidor)
-                const response = await fetch('/api/saveContent', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ content: contentData })
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    showStatus('✅ Conteúdo salvo com sucesso! O site será atualizado em poucos segundos.', 'success');
-                    hasChanges = false;
-                    // Reload to show latest update time
-                    setTimeout(() => loadContent(), 2000);
-                } else {
-                    throw new Error(result.error || 'Erro ao salvar');
-                }
-            } catch (error) {
-                console.error('Erro:', error);
-                showStatus('❌ Erro ao salvar: ' + error.message, 'error');
-            }
-        }
-
-        function resetChanges() {
-            if (confirm('Descartar todas as mudanças?')) {
-                loadContent();
-                showStatus('Mudanças descartadas', 'success');
-            }
-        }
-
-        function showStatus(message, type) {
-            const statusEl = document.getElementById('statusMessage');
-            statusEl.textContent = message;
-            statusEl.className = `status-message ${type}`;
-            setTimeout(() => {
-                statusEl.classList.remove('success', 'error');
-            }, 5000);
-        }
-
-        function showAdmin() {
-            document.getElementById('loginSection').style.display = 'none';
-            document.getElementById('adminSection').style.display = 'block';
-        }
-
-        function logout() {
-            localStorage.removeItem('adminLogin');
-            location.reload();
-        }
-
-        // Check login on load
-        if (localStorage.getItem('adminLogin')) {
-            showAdmin();
-            loadContent();
-        }
-    </script>
-</body>
-</html>
+            document.querySelectorAll('.editor-panel').forEach(p => p.classList.remov
