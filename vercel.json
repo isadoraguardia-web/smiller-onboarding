@@ -13,7 +13,7 @@
           },
           {
                   "src": "/(.*)",
-                  "dest": "/onboarding_smiller_cx_editable.html"
+                  "dest": "/admin.html"
           }
     ]
 }
