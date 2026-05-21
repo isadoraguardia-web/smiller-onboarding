@@ -22,10 +22,10 @@
   <!-- PASSO 1 -->
   <rect x="20" y="75" width="860" height="80" rx="10" fill="none" stroke="#8B0000" stroke-width="3"/>
   <text class="passo-titulo" x="450" y="100">PASSO 1: PESQUISE O HISTÓRICO DO CASO</text>
-  <text class="box-texto" x="150" y="125">✓ Quantos reenvios de placas do caso?</text>
-  <text class="box-texto" x="250" y="125">✓ Quantos replanejamentos?</text>
-  <text class="box-texto" x="500" y="125">✓ Há cobrança adicionais?</text>
-  <text class="box-texto" x="700" y="125">✓ Quanto o dentista/paciente está desgastado?</text>
+  <text class="box-texto" x="200" y="125">✓ Quantos reenvios de placas do caso?</text>
+  <text class="box-texto" x="400" y="125">✓ Quantos replanejamentos?</text>
+  <text class="box-texto" x="600" y="125">✓ Há cobrança adicionais?</text>
+  <text class="box-texto" x="850" y="125">✓ Quanto o dentista/paciente está desgastado?</text>
 
   <!-- PASSO 2 -->
   <text class="passo-titulo" x="450" y="190">PASSO 2: DEFINIR O NÍVEL</text>
