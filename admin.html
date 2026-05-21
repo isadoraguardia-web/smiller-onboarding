@@ -295,11 +295,6 @@
                     <input type="email" id="email" required placeholder="seu@email.com" value="isadora.guardia@smiller.com.br">
                 </div>
 
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" required placeholder="••••••••">
-                </div>
-
                 <button type="submit" class="btn btn-primary">Entrar</button>
                 <div class="error" id="loginError"></div>
             </form>
@@ -337,7 +332,6 @@
         // Token é guardado como variável de ambiente no Vercel
         // Este arquivo NÃO contém o token (para segurança)
         const REPO = 'isadoraguardia-web/smiller-onboarding';
-        const ADMIN_PASSWORD = '301293';
         const ADMIN_EMAIL = 'isadora.guardia@smiller.com.br';
 
         const TABS = [
@@ -362,14 +356,13 @@
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
 
-            if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+            if (email === ADMIN_EMAIL) {
                 localStorage.setItem('adminLogin', 'true');
                 showAdmin();
                 loadContent();
             } else {
-                document.getElementById('loginError').textContent = 'Email ou senha incorretos';
+                document.getElementById('loginError').textContent = 'Email não autorizado';
             }
         });
 
@@ -487,4 +480,16 @@
 
         function switchTab(tabId) {
             // Hide all panels
-            document.querySelectorAll('.editor-panel').forEach(p => p.classList.remov
+            document.querySelectorAll('.editor-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+            // Show selected
+            document.getElementById(`panel-${tabId}`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function markAsChanged() {
+            hasChanges = true;
+        }
+
+        async functi
