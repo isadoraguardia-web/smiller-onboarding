@@ -1,68 +1,36 @@
 {
   "inicio": {
-    "titulo_principal": "",
-    "descricao": "",
-    "lista_items": "",
-    "titulo_primeiro_dia": "",
-    "timeline_items": "",
-    "dica": ""
+    "titulo_principal": "Bem-vindo ao Time de Customer Experience! 👋",
+    "descricao": "Este documento é seu guia de onboarding. Aqui você encontrará tudo que precisa saber para começar sua jornada na Smiller.",
+    "lista_items": ["Conheça a cultura e valores da empresa", "Entenda seus papéis e responsabilidades", "Domine as ferramentas principais", "Alinhe-se com os processos do time"],
+    "titulo_primeiro_dia": "Seu Primeiro Dia",
+    "timeline_items": [{"tempo": "08:00", "titulo": "Chegada e Recepção", "descricao": "Chegue no escritório. Seu buddy o aguardará para fazer o check-in inicial."}, {"tempo": "09:00", "titulo": "Reunião de Boas-vindas", "descricao": "Conheça o time de liderança e tenha uma visão geral da empresa."}, {"tempo": "10:30", "titulo": "Setup Técnico", "descricao": "Receba sua badge, laptop e configure suas credenciais nos sistemas."}, {"tempo": "12:00", "titulo": "Almoço em Equipe", "descricao": "Integração casual com colegas. Aproveite para fazer perguntas!"}, {"tempo": "14:00", "titulo": "Introdução aos Processos", "descricao": "Visão geral dos fluxos e processos do time de Customer Experience."}, {"tempo": "16:00", "titulo": "Ferramentas e Acesso", "descricao": "Walkthrough das principais ferramentas que você usará diariamente."}],
+    "dica": "Mantenha este documento aberto durante seus primeiros dias. Não hesite em fazer perguntas - seu buddy e seu gestor estão aqui para ajudar!"
   },
   "empresa": {
-    "descricao_empresa": "",
-    "valor_1_titulo": "",
-    "valor_1_descricao": "",
-    "valor_2_titulo": "",
-    "valor_2_descricao": "",
-    "valor_3_titulo": "",
-    "valor_3_descricao": "",
-    "valor_4_titulo": "",
-    "valor_4_descricao": "",
-    "valor_5_titulo": "",
-    "valor_5_descricao": "",
-    "papel_cx": "",
-    "responsabilidades": "",
-    "iniciativas": ""
+    "descricao_empresa": "A Smiller Consultoria é uma empresa de consultoria estratégica focada em Customer Experience, transformação digital e operações. Somos uma empresa em crescimento com uma cultura forte e orientada a resultados.",
+    "valor_1_titulo": "Vontade",
+    "valor_1_descricao": "Agimos com determinação e propósito. Queremos fazer a diferença nos negócios dos nossos clientes.",
+    "valor_2_titulo": "Sinergia",
+    "valor_2_descricao": "Acreditamos que juntos alcançamos mais. A colaboração entre times é essencial para nosso sucesso.",
+    "valor_3_titulo": "Excelência",
+    "valor_3_descricao": "Entregamos qualidade em tudo que fazemos. Nosso padrão é sempre o mais alto possível.",
+    "valor_4_titulo": "Dinamismo",
+    "valor_4_descricao": "Somos ágeis e adaptáveis. Num mercado em constante mudança, a velocidade é um diferencial.",
+    "valor_5_titulo": "Disciplina",
+    "valor_5_descricao": "Somos rigorosos em planejamento, execução e acompanhamento. Metas são compromissos.",
+    "papel_cx": "O time de Customer Experience é responsável por desenhar, implementar e otimizar estratégias de experiência do cliente. Nós transformamos dados e insights em ações que geram crescimento e retenção.",
+    "responsabilidades": ["Mapear e entender as jornadas de clientes", "Identificar pontos de dor e oportunidades", "Desenhar soluções de experiência", "Conduzir pesquisas e análises", "Implementar melhorias junto a times internas e clientes", "Medir e reportar impacto das iniciativas"],
+    "iniciativas": "Atualmente estamos focando em: transformação digital de clientes, otimização de NPS e automatização de processos de suporte."
   },
-  "processos": {
-    "descricao_processos": "",
-    "processos_items": ""
-  },
-  "ferramentas": {
-    "descricao_ferramentas": "",
-    "ferramentas_items": ""
-  },
-  "escalacao": {
-    "titulo_decision_tree": "",
-    "regra_ouro": "",
-    "conteudo_principal": ""
-  },
-  "termometro": {
-    "titulo_termometro": "Termômetro",
-    "descricao_termometro": "",
-    "url_google_slides": ""
-  },
-  "mensagens": {
-    "descricao_mensagens": "",
-    "templates": ""
-  },
-  "casos": {
-    "introducao_casos": "",
-    "casos_descricao": ""
-  },
-  "tutoriais": {
-    "descricao_tutoriais": "",
-    "links_tutoriais": ""
-  },
-  "quiz": {
-    "descricao_quiz": "",
-    "conteudo_quiz": ""
-  },
-  "checklist": {
-    "descricao_checklist": "",
-    "itens_checklist": ""
-  },
-  "athena": {
-    "descricao_athena": "",
-    "conteudo_athena": ""
-  }
+  "processos": {"descricao_processos": "Aqui descrevemos os principais fluxos e processos do time de Customer Experience. Estes processos garantem que entregamos de forma consistente e de qualidade.", "processos_items": ["Onboarding de Novos Clientes: definição de PMO, kickoff, alinhamento de expectativas", "Pesquisa de Experiência: design de pesquisa, coleta de dados, análise e recomendações", "Desenho de Solução: workshops, prototipagem, validação com stakeholders", "Implementação: planejamento, execução, acompanhamento e ajustes", "Gestão de Relacionamento: reuniões regulares, reportes, revisão de progresso", "Suporte e Evolução: acompanhamento pós-implementação e melhorias contínuas"]},
+  "ferramentas": {"descricao_ferramentas": "Essas são as ferramentas principais que você usará no seu dia a dia no time de Customer Experience.", "ferramentas_items": ["Slack: comunicação interna", "Monday.com ou Asana: gestão de projetos e tarefas", "Google Drive: documentação e arquivos", "Miro: workshops e brainstorming", "Qualtrics ou SurveySparrow: pesquisas de experiência", "Tableau ou Power BI: análise de dados", "Jira: rastreamento de desenvolvimento"]},
+  "escalacao": {"titulo": "Escalação de Conflitos", "descricao": "Caso você enfrente uma situação delicada, siga este fluxo:"},
+  "termometro": {"titulo": "Termômetro de Engajamento", "descricao": "Como estou no meu primeiro mês?"},
+  "mensagens": {"titulo": "Book de Mensagens", "descricao": "Mensagens-chave para comunicar com clientes e stakeholders"},
+  "casos": {"titulo": "Casos Reais", "descricao": "Estudos de caso de sucesso do time Smiller"},
+  "tutoriais": {"titulo": "Tutoriais e Guias", "descricao": "Guias práticos para usar nossas ferramentas e processos"},
+  "quiz": {"titulo": "Quiz de Aprendizado", "descricao": "Teste seu conhecimento sobre a empresa e o time"},
+  "checklist": {"titulo": "Checklist de Onboarding", "descricao": "O que você precisa completar no seu primeiro mês"},
+  "athena": {"titulo": "Athena - Health Check", "descricao": "Ferramenta de diagnóstico da saúde da experiência do cliente"}
 }
