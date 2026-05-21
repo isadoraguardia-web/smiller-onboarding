@@ -25,7 +25,7 @@
   <text class="box-texto" x="200" y="125">✓ Quantos reenvios de placas do caso?</text>
   <text class="box-texto" x="400" y="125">✓ Quantos replanejamentos?</text>
   <text class="box-texto" x="600" y="125">✓ Há cobrança adicionais?</text>
-  <text class="box-texto" x="700" y="125">✓ Quanto o dentista/paciente está desgastado?</text>
+  <text class="box-texto" x="750" y="125">✓ Quanto o dentista/paciente está desgastado?</text>
 
   <!-- PASSO 2 -->
   <text class="passo-titulo" x="450" y="190">PASSO 2: DEFINIR O NÍVEL</text>
