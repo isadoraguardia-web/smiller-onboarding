@@ -2,9 +2,45 @@
   "inicio": {
     "titulo_principal": "Bem-vindo ao Time de Customer Experience! 👋",
     "descricao": "Este documento é seu guia de onboarding. Aqui você encontrará tudo que precisa saber para começar sua jornada na Smiller.",
-    "lista_items": ["Conheça a cultura e valores da empresa", "Entenda seus papéis e responsabilidades", "Domine as ferramentas principais", "Alinhe-se com os processos do time"],
+    "lista_items": [
+      "Conheça a cultura e valores da empresa",
+      "Entenda seus papéis e responsabilidades",
+      "Domine as ferramentas principais",
+      "Alinhe-se com os processos do time"
+    ],
     "titulo_primeiro_dia": "Seu Primeiro Dia",
-    "timeline_items": [{"tempo": "08:00", "titulo": "Chegada e Recepção", "descricao": "Chegue no escritório. Seu buddy o aguardará para fazer o check-in inicial."}, {"tempo": "09:00", "titulo": "Reunião de Boas-vindas", "descricao": "Conheça o time de liderança e tenha uma visão geral da empresa."}, {"tempo": "10:30", "titulo": "Setup Técnico", "descricao": "Receba sua badge, laptop e configure suas credenciais nos sistemas."}, {"tempo": "12:00", "titulo": "Almoço em Equipe", "descricao": "Integração casual com colegas. Aproveite para fazer perguntas!"}, {"tempo": "14:00", "titulo": "Introdução aos Processos", "descricao": "Visão geral dos fluxos e processos do time de Customer Experience."}, {"tempo": "16:00", "titulo": "Ferramentas e Acesso", "descricao": "Walkthrough das principais ferramentas que você usará diariamente."}],
+    "timeline_items": [
+      {
+        "tempo": "08:00",
+        "titulo": "Chegada e Recepção",
+        "descricao": "Chegue no escritório. Seu buddy o aguardará para fazer o check-in inicial."
+      },
+      {
+        "tempo": "09:00",
+        "titulo": "Reunião de Boas-vindas",
+        "descricao": "Conheça o time de liderança e tenha uma visão geral da empresa."
+      },
+      {
+        "tempo": "10:30",
+        "titulo": "Setup Técnico",
+        "descricao": "Receba sua badge, laptop e configure suas credenciais nos sistemas."
+      },
+      {
+        "tempo": "12:00",
+        "titulo": "Almoço em Equipe",
+        "descricao": "Integração casual com colegas. Aproveite para fazer perguntas!"
+      },
+      {
+        "tempo": "14:00",
+        "titulo": "Introdução aos Processos",
+        "descricao": "Visão geral dos fluxos e processos do time de Customer Experience."
+      },
+      {
+        "tempo": "16:00",
+        "titulo": "Ferramentas e Acesso",
+        "descricao": "Walkthrough das principais ferramentas que você usará diariamente."
+      }
+    ],
     "dica": "Mantenha este documento aberto durante seus primeiros dias. Não hesite em fazer perguntas - seu buddy e seu gestor estão aqui para ajudar!"
   },
   "empresa": {
@@ -20,17 +56,71 @@
     "valor_5_titulo": "Disciplina",
     "valor_5_descricao": "Somos rigorosos em planejamento, execução e acompanhamento. Metas são compromissos.",
     "papel_cx": "O time de Customer Experience é responsável por desenhar, implementar e otimizar estratégias de experiência do cliente. Nós transformamos dados e insights em ações que geram crescimento e retenção.",
-    "responsabilidades": ["Mapear e entender as jornadas de clientes", "Identificar pontos de dor e oportunidades", "Desenhar soluções de experiência", "Conduzir pesquisas e análises", "Implementar melhorias junto a times internas e clientes", "Medir e reportar impacto das iniciativas"],
+    "responsabilidades": [
+      "Mapear e entender as jornadas de clientes",
+      "Identificar pontos de dor e oportunidades",
+      "Desenhar soluções de experiência",
+      "Conduzir pesquisas e análises",
+      "Implementar melhorias junto a times internas e clientes",
+      "Medir e reportar impacto das iniciativas"
+    ],
     "iniciativas": "Atualmente estamos focando em: transformação digital de clientes, otimização de NPS e automatização de processos de suporte."
   },
-  "processos": {"descricao_processos": "Aqui descrevemos os principais fluxos e processos do time de Customer Experience. Estes processos garantem que entregamos de forma consistente e de qualidade.", "processos_items": ["Onboarding de Novos Clientes: definição de PMO, kickoff, alinhamento de expectativas", "Pesquisa de Experiência: design de pesquisa, coleta de dados, análise e recomendações", "Desenho de Solução: workshops, prototipagem, validação com stakeholders", "Implementação: planejamento, execução, acompanhamento e ajustes", "Gestão de Relacionamento: reuniões regulares, reportes, revisão de progresso", "Suporte e Evolução: acompanhamento pós-implementação e melhorias contínuas"]},
-  "ferramentas": {"descricao_ferramentas": "Essas são as ferramentas principais que você usará no seu dia a dia no time de Customer Experience.", "ferramentas_items": ["Slack: comunicação interna", "Monday.com ou Asana: gestão de projetos e tarefas", "Google Drive: documentação e arquivos", "Miro: workshops e brainstorming", "Qualtrics ou SurveySparrow: pesquisas de experiência", "Tableau ou Power BI: análise de dados", "Jira: rastreamento de desenvolvimento"]},
-  "escalacao": {"titulo": "Escalação de Conflitos", "descricao": "Caso você enfrente uma situação delicada, siga este fluxo:"},
-  "termometro": {"titulo": "Termômetro de Engajamento", "descricao": "Como estou no meu primeiro mês?"},
-  "mensagens": {"titulo": "Book de Mensagens", "descricao": "Mensagens-chave para comunicar com clientes e stakeholders"},
-  "casos": {"titulo": "Casos Reais", "descricao": "Estudos de caso de sucesso do time Smiller"},
-  "tutoriais": {"titulo": "Tutoriais e Guias", "descricao": "Guias práticos para usar nossas ferramentas e processos"},
-  "quiz": {"titulo": "Quiz de Aprendizado", "descricao": "Teste seu conhecimento sobre a empresa e o time"},
-  "checklist": {"titulo": "Checklist de Onboarding", "descricao": "O que você precisa completar no seu primeiro mês"},
-  "athena": {"titulo": "Athena - Health Check", "descricao": "Ferramenta de diagnóstico da saúde da experiência do cliente"}
+  "processos": {
+    "descricao_processos": "Aqui descrevemos os principais fluxos e processos do time de Customer Experience. Estes processos garantem que entregamos de forma consistente e de qualidade.",
+    "processos_items": [
+      "Onboarding de Novos Clientes: definição de PMO, kickoff, alinhamento de expectativas",
+      "Pesquisa de Experiência: design de pesquisa, coleta de dados, análise e recomendações",
+      "Desenho de Solução: workshops, prototipagem, validação com stakeholders",
+      "Implementação: planejamento, execução, acompanhamento e ajustes",
+      "Gestão de Relacionamento: reuniões regulares, reportes, revisão de progresso",
+      "Suporte e Evolução: acompanhamento pós-implementação e melhorias contínuas"
+    ]
+  },
+  "ferramentas": {
+    "descricao_ferramentas": "Essas são as ferramentas principais que você usará no seu dia a dia no time de Customer Experience.",
+    "ferramentas_items": [
+      "Slack: comunicação interna",
+      "Monday.com ou Asana: gestão de projetos e tarefas",
+      "Google Drive: documentação e arquivos",
+      "Miro: workshops e brainstorming",
+      "Qualtrics ou SurveySparrow: pesquisas de experiência",
+      "Tableau ou Power BI: análise de dados",
+      "Jira: rastreamento de desenvolvimento"
+    ]
+  },
+  "escalacao": {
+    "titulo": "Escalação de Conflitos",
+    "descricao": "Caso você enfrente uma situação delicada, siga este fluxo:"
+  },
+  "termometro": {
+    "titulo": "Termômetro de Engajamento",
+    "descricao": "Fluxo de Escalação de Clientes",
+    "imagem_url": "https://github.com/isadoraguardia-web/smiller-onboarding/raw/main/assets/termometro-clientes.png",
+    "conteudo_html": "<p>Adicione a imagem do termômetro acima</p>"
+  },
+  "mensagens": {
+    "titulo": "Book de Mensagens",
+    "descricao": "Mensagens-chave para comunicar com clientes e stakeholders"
+  },
+  "casos": {
+    "titulo": "Casos Reais",
+    "descricao": "Estudos de caso de sucesso do time Smiller"
+  },
+  "tutoriais": {
+    "titulo": "Tutoriais e Guias",
+    "descricao": "Guias práticos para usar nossas ferramentas e processos"
+  },
+  "quiz": {
+    "titulo": "Quiz de Aprendizado",
+    "descricao": "Teste seu conhecimento sobre a empresa e o time"
+  },
+  "checklist": {
+    "titulo": "Checklist de Onboarding",
+    "descricao": "O que você precisa completar no seu primeiro mês"
+  },
+  "athena": {
+    "titulo": "Athena - Health Check",
+    "descricao": "Ferramenta de diagnóstico da saúde da experiência do cliente"
+  }
 }
