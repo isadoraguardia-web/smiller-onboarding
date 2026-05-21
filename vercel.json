@@ -1,9 +1,6 @@
 {
     "version": 2,
     "public": true,
-    "functions": {
-        "api/**/*.js": {}
-    },
     "routes": [
         {
             "src": "/api/(.*)",
