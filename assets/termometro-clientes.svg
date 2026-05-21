@@ -1,0 +1,89 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo transparente -->
+  <defs>
+    <style>
+      .titulo { font-size: 28px; font-weight: bold; color: #8B0000; text-anchor: middle; font-family: Arial, sans-serif; }
+      .subtitulo { font-size: 14px; color: #666; text-anchor: middle; font-family: Arial, sans-serif; }
+      .passo-titulo { font-size: 16px; font-weight: bold; color: #8B0000; text-anchor: middle; font-family: Arial, sans-serif; }
+      .box-titulo { font-size: 14px; font-weight: bold; text-anchor: middle; font-family: Arial, sans-serif; }
+      .box-texto { font-size: 12px; text-anchor: middle; font-family: Arial, sans-serif; }
+      .box-nivel1 { fill: #E3F2FD; stroke: #1976D2; stroke-width: 2; }
+      .box-nivel2 { fill: #FFF3E0; stroke: #F57C00; stroke-width: 2; }
+      .box-nivel3 { fill: #FCE4EC; stroke: #C2185B; stroke-width: 2; }
+      .box-passo { fill: #FFF9C4; stroke: #F57F17; stroke-width: 2; }
+      .caixa-vermelha { fill: #C41C3B; }
+    </style>
+  </defs>
+
+  <!-- Título -->
+  <text class="titulo" x="450" y="35">Termômetro Clientes</text>
+  <text class="subtitulo" x="450" y="55">Fluxo de Escalação Estruturado</text>
+
+  <!-- PASSO 1 -->
+  <rect x="20" y="75" width="860" height="80" rx="10" fill="none" stroke="#8B0000" stroke-width="3"/>
+  <text class="passo-titulo" x="450" y="100">PASSO 1: PESQUISE O HISTÓRICO DO CASO</text>
+  <text class="box-texto" x="50" y="125">✓ Quantos meses de atraso?</text>
+  <text class="box-texto" x="250" y="125">✓ Quantos atrasos anteriores?</text>
+  <text class="box-texto" x="500" y="125">✓ Há cobrança anterior?</text>
+  <text class="box-texto" x="700" y="125">✓ Quanto o devedor pagou?</text>
+  <text class="box-texto" x="50" y="145">já está designado?</text>
+
+  <!-- PASSO 2 -->
+  <text class="passo-titulo" x="450" y="190">PASSO 2: DEFINIR O NÍVEL</text>
+
+  <!-- Nível 1 -->
+  <rect class="box-nivel1" x="30" y="210" width="260" height="160" rx="8"/>
+  <text class="box-titulo" x="160" y="235" fill="#1976D2">NÍVEL 1</text>
+  <text class="box-titulo" x="160" y="255" fill="#1976D2">Simples</text>
+  <text class="box-texto" x="160" y="275">(1ª ocorrência do caso)</text>
+  <text class="box-texto" x="160" y="300">👤 Atendente Resolve</text>
+  <text class="box-texto" x="60" y="325">✓ Resolver assunto</text>
+  <text class="box-texto" x="60" y="345">✓ Bem-estar</text>
+
+  <!-- Nível 2 -->
+  <rect class="box-nivel2" x="320" y="210" width="260" height="160" rx="8"/>
+  <text class="box-titulo" x="450" y="235" fill="#F57C00">NÍVEL 2</text>
+  <text class="box-titulo" x="450" y="255" fill="#F57C00">Despedaço</text>
+  <text class="box-texto" x="450" y="280">✓ Problema simples (sem recorrência)</text>
+  <text class="box-texto" x="450" y="300">✓ Até mesmo já teve navios</text>
+  <text class="box-texto" x="450" y="320">✓ Histórico: reinvenção, replanejamentos</text>
+  <text class="box-texto" x="450" y="340">✓ Não repetir mesma conduta anterior</text>
+
+  <!-- Nível 3 -->
+  <rect class="box-nivel3" x="610" y="210" width="260" height="160" rx="8"/>
+  <text class="box-titulo" x="740" y="235" fill="#C2185B">NÍVEL 3</text>
+  <text class="box-titulo" x="740" y="255" fill="#C2185B">Crítico</text>
+  <text class="box-texto" x="740" y="280">✓ Replanejamentos que deixaram</text>
+  <text class="box-texto" x="740" y="300">✓ Reinício de replanejamento</text>
+  <text class="box-texto" x="740" y="320">✓ Considerada múltiplos problemas</text>
+  <text class="box-texto" x="740" y="340">✓ Ao cliente até história para</text>
+  <text class="box-titulo" x="740" y="360" fill="#C2185B">Atendente passa história para</text>
+
+  <!-- PASSO 3 -->
+  <text class="passo-titulo" x="450" y="415">PASSO 3: TOMAR AÇÃO APROPRIADA</text>
+
+  <!-- Ação Nível 1 -->
+  <rect class="box-nivel1" x="30" y="435" width="260" height="100" rx="8"/>
+  <text class="box-titulo" x="160" y="460" fill="#1976D2">👤 ATENDENTE</text>
+  <text class="box-texto" x="160" y="485">✓ Resolver assunto</text>
+  <text class="box-texto" x="160" y="505">✓ Bem-estar</text>
+
+  <!-- Ação Nível 2 -->
+  <rect class="box-nivel2" x="320" y="435" width="260" height="100" rx="8"/>
+  <text class="box-titulo" x="450" y="460" fill="#F57C00">👥 👔 JUNTUS</text>
+  <text class="box-texto" x="450" y="485">✓ Consultem histórico</text>
+  <text class="box-texto" x="450" y="505">✓ Decisão colaborativa</text>
+
+  <!-- Ação Nível 3 -->
+  <rect class="box-nivel3" x="610" y="435" width="260" height="100" rx="8"/>
+  <text class="box-titulo" x="740" y="460" fill="#C2185B">⬆️ ESCALA</text>
+  <text class="box-texto" x="740" y="485">✓ Supervisão avalia</text>
+  <text class="box-texto" x="740" y="505">✓ Escala de inesperado</text>
+
+  <!-- Footer -->
+  <rect class="box-passo" x="20" y="560" width="860" height="30" rx="8"/>
+  <text class="box-texto" x="450" y="582" fill="#F57F17">💡 O histórico mostra quanto a dívida está designado, isto afeta totalmente a solução viável!</text>
+
+  <!-- Barra vermelha inferior -->
+  <rect class="caixa-vermelha" x="0" y="600" width="900" height="0"/>
+</svg>
