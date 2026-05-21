@@ -11,19 +11,14 @@
     "titulo_primeiro_dia": "Seu Primeiro Dia",
     "timeline_items": [
       {
-        "tempo": "08:00",
+        "tempo": "09:00",
         "titulo": "Chegada e Recepção",
-        "descricao": "Chegue no escritório. Seu buddy o aguardará para fazer o check-in inicial."
+        "descricao": "Chegue no escritório."
       },
       {
-        "tempo": "09:00",
+        "tempo": "09:30",
         "titulo": "Reunião de Boas-vindas",
         "descricao": "Conheça o time de liderança e tenha uma visão geral da empresa."
-      },
-      {
-        "tempo": "10:30",
-        "titulo": "Setup Técnico",
-        "descricao": "Receba sua badge, laptop e configure suas credenciais nos sistemas."
       },
       {
         "tempo": "12:00",
@@ -38,13 +33,13 @@
       {
         "tempo": "16:00",
         "titulo": "Ferramentas e Acesso",
-        "descricao": "Walkthrough das principais ferramentas que você usará diariamente."
+        "descricao": "Login na Huggy e Lousinha."
       }
     ],
-    "dica": "Mantenha este documento aberto durante seus primeiros dias. Não hesite em fazer perguntas - seu buddy e seu gestor estão aqui para ajudar!"
+    "dica": "Mantenha este documento aberto durante seus primeiros dias. Não hesite em fazer perguntas - seu time e seu gestor estão aqui para ajudar!"
   },
   "empresa": {
-    "descricao_empresa": "A Smiller Consultoria é uma empresa de consultoria estratégica focada em Customer Experience, transformação digital e operações. Somos uma empresa em crescimento com uma cultura forte e orientada a resultados.",
+    "descricao_empresa": "A Smiller é uma empresa de alinhadores invisíveis. Somos uma empresa focada em crescimento com uma cultura forte e orientada a resultados.",
     "valor_1_titulo": "Vontade",
     "valor_1_descricao": "Agimos com determinação e propósito. Queremos fazer a diferença nos negócios dos nossos clientes.",
     "valor_2_titulo": "Sinergia",
