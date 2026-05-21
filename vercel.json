@@ -2,22 +2,16 @@
     "version": 2,
     "public": true,
     "functions": {
-          "api/**/*.js": {
-                  "runtime": "nodejs20.x"
-          }
+        "api/**/*.js": {}
     },
     "routes": [
-          {
-                  "src": "/api/(.*)",
-                  "dest": "/api/$1"
-          },
-          {
-                  "src": "/(.*)\\.html$",
-                  "dest": "/$1.html"
-          },
-          {
-                  "src": "/(.*)",
-                  "dest": "/admin.html"
-          }
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
+        }
     ]
 }
