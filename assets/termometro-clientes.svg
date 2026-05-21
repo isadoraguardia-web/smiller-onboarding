@@ -37,16 +37,15 @@
   <text class="box-titulo" x="160" y="255" fill="#1976D2">Simples</text>
   <text class="box-texto" x="160" y="275">(1ª ocorrência do caso)</text>
   <text class="box-texto" x="160" y="300">👤 Atendente Resolve</text>
-  <text class="box-texto" x="60" y="325">✓ Resolver assunto</text>
-  <text class="box-texto" x="60" y="345">✓ Bem-estar</text>
 
   <!-- Nível 2 -->
   <rect class="box-nivel2" x="320" y="210" width="260" height="160" rx="8"/>
   <text class="box-titulo" x="450" y="235" fill="#F57C00">NÍVEL 2</text>
   <text class="box-titulo" x="450" y="255" fill="#F57C00">Desgastado</text>
   <text class="box-texto" x="450" y="280">✓ Problema simples (sem recorrência)</text>
-  <text class="box-texto" x="450" y="300">✓ Até mesmo já teve navios</text>
-  <text class="box-texto" x="450" y="320">✓ Histórico: reinvenção, replanejamentos</text>
+  <text class="box-texto" x="450" y="300">✓ MAS dentista já teve outros problemas</text>
+  <text class="box-texto" x="450" y="320">✓ Histórico: reenvios, replanejamentos</text>
+  <text class="box-texto" x="450" y="320">✓ Cliente apresenta insatisfação clara</text>
   <text class="box-texto" x="450" y="340">✓ Não repetir mesma conduta anterior</text>
 
   <!-- Nível 3 -->
