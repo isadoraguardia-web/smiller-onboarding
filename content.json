@@ -96,7 +96,7 @@
   "termometro": {
     "titulo": "Termômetro de Engajamento",
     "descricao": "Fluxo de Escalação de Clientes",
-    "imagem_url": "https://github.com/isadoraguardia-web/smiller-onboarding/raw/main/assets/termometro-clientes.png",
+    "imagem_url": "https://raw.githubusercontent.com/isadoraguardia-web/smiller-onboarding/main/assets/termometro-clientes.svg",
     "conteudo_html": "<p>Adicione a imagem do termômetro acima</p>"
   },
   "mensagens": {
