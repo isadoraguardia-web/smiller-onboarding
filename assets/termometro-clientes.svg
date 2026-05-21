@@ -24,7 +24,7 @@
   <text class="passo-titulo" x="450" y="100">PASSO 1: PESQUISE O HISTÓRICO DO CASO</text>
   <text class="box-texto" x="200" y="125">✓ Quantos reenvios de placas do caso?</text>
   <text class="box-texto" x="400" y="125">✓ Quantos replanejamentos?</text>
-  <text class="box-texto" x="600" y="125">✓ Há cobrança adicionais?</text>
+  <text class="box-texto" x="575" y="125">✓ Há cobrança adicionais?</text>
   <text class="box-texto" x="750" y="125">✓ Quanto o dentista/paciente está desgastado?</text>
 
   <!-- PASSO 2 -->
