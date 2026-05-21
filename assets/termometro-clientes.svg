@@ -22,11 +22,10 @@
   <!-- PASSO 1 -->
   <rect x="20" y="75" width="860" height="80" rx="10" fill="none" stroke="#8B0000" stroke-width="3"/>
   <text class="passo-titulo" x="450" y="100">PASSO 1: PESQUISE O HISTÓRICO DO CASO</text>
-  <text class="box-texto" x="50" y="125">✓ Quantos meses de atraso?</text>
-  <text class="box-texto" x="250" y="125">✓ Quantos atrasos anteriores?</text>
-  <text class="box-texto" x="500" y="125">✓ Há cobrança anterior?</text>
-  <text class="box-texto" x="700" y="125">✓ Quanto o devedor pagou?</text>
-  <text class="box-texto" x="50" y="145">já está designado?</text>
+  <text class="box-texto" x="150" y="125">✓ Quantos reenvios de placas do caso?</text>
+  <text class="box-texto" x="250" y="125">✓ Quantos replanejamentos?</text>
+  <text class="box-texto" x="500" y="125">✓ Há cobrança adicionais?</text>
+  <text class="box-texto" x="700" y="125">✓ Quanto o dentista/paciente está desgastado?</text>
 
   <!-- PASSO 2 -->
   <text class="passo-titulo" x="450" y="190">PASSO 2: DEFINIR O NÍVEL</text>
@@ -45,18 +44,19 @@
   <text class="box-texto" x="450" y="280">✓ Problema simples (sem recorrência)</text>
   <text class="box-texto" x="450" y="300">✓ MAS dentista já teve outros problemas</text>
   <text class="box-texto" x="450" y="320">✓ Histórico: reenvios, replanejamentos</text>
-  <text class="box-texto" x="450" y="320">✓ Cliente apresenta insatisfação clara</text>
-  <text class="box-texto" x="450" y="340">✓ Não repetir mesma conduta anterior</text>
+  <text class="box-texto" x="450" y="340">✓ Cliente apresenta insatisfação clara</text>
+  <text class="box-texto" x="450" y="360">✓ Não repetir mesma conduta anterior</text>
 
   <!-- Nível 3 -->
   <rect class="box-nivel3" x="610" y="210" width="260" height="160" rx="8"/>
   <text class="box-titulo" x="740" y="235" fill="#C2185B">NÍVEL 3</text>
   <text class="box-titulo" x="740" y="255" fill="#C2185B">Crítico</text>
-  <text class="box-texto" x="740" y="280">✓ Replanejamentos que deixaram</text>
-  <text class="box-texto" x="740" y="300">✓ Reinício de replanejamento</text>
-  <text class="box-texto" x="740" y="320">✓ Considerada múltiplos problemas</text>
-  <text class="box-texto" x="740" y="340">✓ Ao cliente até história para</text>
-  <text class="box-titulo" x="740" y="360" fill="#C2185B">Atendente passa história para</text>
+  <text class="box-texto" x="740" y="280">✓ Problemas recorrentes com o MESMO paciente</text>
+  <text class="box-texto" x="740" y="300">✓ Replanejamentos que falharam</text>
+  <text class="box-texto" x="740" y="320">✓ Reenvio de placas recorrentes</text>
+  <text class="box-texto" x="740" y="340">✓ Risco de perda do cliente</text>
+  <text class="box-texto" x="740" y="360">✓ Alto impacto financeiro</text>
+  <text class="box-titulo" x="740" y="380" fill="#C2185B">Atendente passa história para supervisora</text>
 
   <!-- PASSO 3 -->
   <text class="passo-titulo" x="450" y="415">PASSO 3: TOMAR AÇÃO APROPRIADA</text>
@@ -64,24 +64,24 @@
   <!-- Ação Nível 1 -->
   <rect class="box-nivel1" x="30" y="435" width="260" height="100" rx="8"/>
   <text class="box-titulo" x="160" y="460" fill="#1976D2">👤 ATENDENTE</text>
-  <text class="box-texto" x="160" y="485">✓ Resolver assunto</text>
-  <text class="box-texto" x="160" y="505">✓ Bem-estar</text>
+  <text class="box-texto" x="160" y="485">✓ Resolver assunto sozinho</text>
+  <text class="box-texto" x="160" y="505">✓ Sem escalar</text>
 
   <!-- Ação Nível 2 -->
   <rect class="box-nivel2" x="320" y="435" width="260" height="100" rx="8"/>
   <text class="box-titulo" x="450" y="460" fill="#F57C00">👥 👔 JUNTOS</text>
-  <text class="box-texto" x="450" y="485">✓ Consultem histórico</text>
-  <text class="box-texto" x="450" y="505">✓ Decisão colaborativa</text>
+  <text class="box-texto" x="450" y="485">✓ Consultar histórico</text>
+  <text class="box-texto" x="450" y="505">✓ Decisão colaborativa com supervisora</text>
 
   <!-- Ação Nível 3 -->
   <rect class="box-nivel3" x="610" y="435" width="260" height="100" rx="8"/>
   <text class="box-titulo" x="740" y="460" fill="#C2185B">⬆️ ESCALA</text>
-  <text class="box-texto" x="740" y="485">✓ Supervisão avalia</text>
-  <text class="box-texto" x="740" y="505">✓ Escala de inesperado</text>
+  <text class="box-texto" x="740" y="485">✓ Supervisão avalia situação</text>
+  <text class="box-texto" x="740" y="505">✓ Escala se necessário</text>
 
   <!-- Footer -->
   <rect class="box-passo" x="20" y="560" width="860" height="30" rx="8"/>
-  <text class="box-texto" x="450" y="582" fill="#F57F17">💡 O histórico mostra quanto a dívida está designado, isto afeta totalmente a solução viável!</text>
+  <text class="box-texto" x="450" y="582" fill="#F57F17">💡 O histórico mostra quanto o dentista já está desgastado, isto afeta totalmente a solução viável!</text>
 
   <!-- Barra vermelha inferior -->
   <rect class="caixa-vermelha" x="0" y="600" width="900" height="0"/>
