@@ -502,7 +502,7 @@
             <button class="nav-btn" data-secao="tutoriais" onclick="mostrarSecao('tutoriais')">Tutoriais</button>
             <button class="nav-btn" data-secao="quiz" onclick="mostrarSecao('quiz')">Quiz</button>
             <button class="nav-btn" data-secao="checklist" onclick="mostrarSecao('checklist')">Checklist</button>
-            <button class="nav-btn" data-secao="athena" onclick="mostrarSecao('athena')">Athena Saúde</button>
+            <button class="nav-btn" data-secao="athena" onclick="mostrarSecao('athena')">Fluxo Athena</button>
         </ul>
     </nav>
 
@@ -706,7 +706,7 @@
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <h4>7️⃣ Consulta Prazo</h4>
-                            <p>Dentista pode consultizar prazo de envio na plataforma</p>
+                            <p>Dentista pode consultar prazo de envio na plataforma</p>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -835,20 +835,45 @@
                     </li>
                 </ol>
 
-                <h4 style="margin-top: 30px;">❌ Placas Quebradas/Perdidas</h4>
+                <h4 style="margin-top: 30px;">❌ Placa Perdida</h4>
+                <p style="margin: 10px 0;">Perda é responsabilidade do paciente (mau uso). <strong>Sempre cobramos</strong> a refabricação: R$ 35,90 por unidade. Não há análise de dias.</p>
                 <ol style="margin: 15px 0 15px 20px; line-height: 1.8;">
-                    <li><strong>Coletar informações</strong> (mesmas do acima)</li>
-                    <li><strong>Registrar tempo de uso:</strong> Quantos dias usou o alinhador?
-                        <ul style="margin-top: 10px;">
-                            <li>✓ <strong>Menos de 10 dias:</strong> Cobrar refabricação (R$ 35,90 por unidade)</li>
-                            <li>✓ <strong>10+ dias:</strong> Cliente pode usar próxima placa (avaliar contexto)</li>
-                        </ul>
-                    </li>
+                    <li><strong>Coletar informações:</strong> nome do paciente, número da placa, parte afetada (superior/inferior)</li>
+                    <li><strong>Informar a cobrança</strong> de R$ 35,90/unidade e seguir com a refabricação (prazo 3 dias úteis + frete)</li>
                 </ol>
 
-                <div class="alert alert-warning" style="margin-top: 20px;">
-                    <strong>⚠️ Atenção:</strong> Alguns casos de quebra dentro de 15 dias podem ser reenviados sem custo. Analise cada caso individualmente e considere o contexto.
-                </div>
+                <h4 style="margin-top: 30px;">❌ Placa Quebrada</h4>
+                <p style="margin: 10px 0;">A quebra pode ter várias causas, então a regra depende dos dias de uso. <strong>Referência:</strong> cada placa é usada no máximo 20 dias; passando disso, o paciente já deveria estar na próxima.</p>
+                <ol style="margin: 15px 0 15px 20px; line-height: 1.8;">
+                    <li><strong>Coletar informações</strong> (mesmas do acima)</li>
+                    <li><strong>Registrar tempo de uso</strong> e aplicar a regra abaixo:</li>
+                </ol>
+                <table style="margin-top: 10px;">
+                    <thead>
+                        <tr>
+                            <th>Dias de uso</th>
+                            <th>O que fazer</th>
+                            <th>Custo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Menos de 10 dias</strong></td>
+                            <td>Reenvio (mal foi usada → provável defeito)</td>
+                            <td><strong>Sem custo</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>10 a 15 dias</strong></td>
+                            <td>Paciente avança para a próxima placa, sem reenvio</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mais de 15 dias (até 20)</strong></td>
+                            <td>Refabricação</td>
+                            <td><strong>Cobra R$ 35,90/un.</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="card">
@@ -932,12 +957,16 @@
                     <strong>Propósito:</strong> TODA comunicação com clientes (dentistas APENAS) é feita via Huggy. Nenhum email direto.
                 </div>
 
+                <div class="alert alert-info">
+                    <strong>⏱️ Tempo de primeira resposta: 15 minutos.</strong> Toda mensagem de dentista no Huggy deve receber uma primeira resposta em até 15 minutos, dentro do horário útil (seg–sex, 9h–18h). Mensagens recebidas fora desse horário começam a contar na abertura do próximo horário útil. Primeira resposta não significa solução completa — significa que o dentista não fica sem retorno. Se ainda estiver apurando, use o template <strong>"Confirmação de Recebimento"</strong> do Book de Mensagens para responder dentro dos 15 min e seguir trabalhando no caso.
+                </div>
+
                 <h4 style="margin-top: 20px;">Como Funciona:</h4>
                 <ul style="margin-left: 20px; line-height: 2.2;">
                     <li><strong>Chat com dentistas:</strong> Dentistas enviam mensagens via Huggy</li>
                     <li><strong>Histórico:</strong> Todo caso tem histórico completo de mensagens</li>
                     <li><strong>Templates:</strong> Use o Book de Mensagens para respostas padrão</li>
-                    <li><strong>SUSE:</strong> Dados sincronizam com sistema de credenciamento, fornece informações específicas do dentista</li>
+                    <li><strong>SUSE:</strong> sistema integrado ao Huggy e ao nosso banco de dados. Quando um dentista abre um chat, a SUSE tenta identificá-lo automaticamente e exibe seus dados: CPF, tabela de valores do plano, prazo de entrega da região, telefone e formas de pagamento. Use esses dados para confirmar prazo, preço e contato sem precisar perguntar ao dentista. <strong>Se a SUSE não identificar o cliente, peça a identificação a ele antes de prosseguir.</strong></li>
                 </ul>
 
                 <h4 style="margin-top: 25px;">✅ Boas Práticas:</h4>
@@ -1115,32 +1144,31 @@
                         <p style="font-size: 0.9em; line-height: 1.6;"><strong>Casos Críticos</strong><br>✓ Ameaça de processo • Clientes VIP • Crises</p>
                     </div>
                 </div>
+                <div class="alert alert-info">
+                    <strong>Importante:</strong> seu caminho é simples — ou você resolve, ou passa para a <strong>Caroline</strong>. O que sobe da Caroline para a coordenação (Isadora) é a <strong>Caroline</strong> quem decide, não você. Seu papel é levar para a Caroline tudo o que passa do básico.
+                </div>
             </div>
 
             <div class="card">
-                <h3>🔀 Decision Tree Prático</h3>
-                <h4 style="margin-top: 20px; color: var(--primary-blue);">P1: Sabe a resposta com 100% de certeza?</h4>
+                <h3>🔀 Quando escalar — na prática</h3>
+                <h4 style="margin-top: 20px; color: var(--primary-blue);">✅ Resolvo eu mesmo quando:</h4>
                 <div style="margin: 15px 0 15px 20px; padding-left: 15px; border-left: 4px solid var(--success);">
-                    <p><strong>SIM ➜</strong> Responda você mesmo!</p>
-                    <p style="margin-top: 10px;"><strong>NÃO ➜</strong> Vá para P2</p>
+                    <p>Sei a resposta com segurança e é caso simples — prazo, confirmação, dúvida comum.</p>
                 </div>
 
-                <h4 style="margin-top: 20px; color: var(--primary-blue);">P2: É problema técnico ou precisa outra área?</h4>
+                <h4 style="margin-top: 20px; color: var(--primary-blue);">⬆️ Escalo para a Caroline quando:</h4>
                 <div style="margin: 15px 0 15px 20px; padding-left: 15px; border-left: 4px solid var(--warning);">
-                    <p><strong>SIM ➜</strong> Escale para <strong>Caroline</strong></p>
-                    <p style="margin-top: 10px;"><strong>NÃO ➜</strong> Vá para P3</p>
+                    <p>É problema técnico ou de outra área, ou eu não tenho certeza. Na dúvida, escala — escalar não é fracasso, é sinergia.</p>
                 </div>
 
-                <h4 style="margin-top: 20px; color: var(--primary-blue);">P3: Cliente muito insatisfeito ou agressivo?</h4>
-                <div style="margin: 15px 0 15px 20px; padding-left: 15px; border-left: 4px solid var(--danger);">
-                    <p><strong>SIM ➜</strong> Escale para <strong>Caroline</strong> (#urgent)</p>
-                    <p style="margin-top: 10px;"><strong>NÃO ➜</strong> Vá para P4</p>
-                </div>
-
-                <h4 style="margin-top: 20px; color: var(--primary-blue);">P4: É um dos problemas comuns?</h4>
-                <div style="margin: 15px 0 15px 20px; padding-left: 15px; border-left: 4px solid var(--success);">
-                    <p><strong>SIM ➜</strong> Responda seguindo protocolo</p>
-                    <p style="margin-top: 10px;"><strong>NÃO ➜</strong> Escale para <strong>Caroline</strong></p>
+                <div class="alert alert-warning" style="margin-top: 20px;">
+                    <strong>🚨 Escalo IMEDIATAMENTE para a Caroline, sem tentar resolver, quando o cliente:</strong>
+                    <ul style="margin: 10px 0 0 20px; line-height: 2;">
+                        <li>mencionar <strong>advogado / ação judicial</strong></li>
+                        <li>pedir <strong>dinheiro de volta / reembolso</strong></li>
+                        <li>disser que o <strong>paciente quer desistir do tratamento</strong> — e <strong>registrar o motivo informado</strong></li>
+                    </ul>
+                    <p style="margin-top: 10px;">Nesses três, não negocie nem prometa nada. Escale na hora, com o contexto.</p>
                 </div>
             </div>
 
@@ -1203,7 +1231,7 @@
             <div class="card">
                 <h3>✅ Confirmação de Recebimento</h3>
                 <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
-                    <em>"Olá [Nome do Dentista]! Recebemos sua solicitação para o caso do [Nome Completo do Paciente]. Estamos analisando a documentação e em breve enviaremos atualizações. Obrigado por confiar na Smiller!"</em>
+                    <em>"Olá [Nome do Dentista]! Recebemos sua solicitação para o caso do [Nome Completo do Paciente]. Estamos analisando a documentação e retornamos com uma atualização até [prazo concreto — ex.: amanhã / em até X dias úteis]. Obrigado por confiar na Smiller!"</em>
                 </p>
             </div>
 
@@ -1273,7 +1301,7 @@
             <div class="card">
                 <h3>❓ Dúvida Técnica sobre a Plataforma</h3>
                 <p style="background-color: var(--light-gray); padding: 15px; border-radius: 6px; margin-top: 15px;">
-                    <em>"Olá [Nome do Dentista]! Agradeço a pergunta! [Explicar como funciona ou como fazer]. Caso tenha dúvidas técnicas mais complexas, estou passando para o time de tecnologia da Smiller. Eles te retornarão em breve!"</em>
+                    <em>"Olá [Nome do Dentista]! Agradeço a pergunta! [Explicar como funciona ou como fazer]. Caso tenha dúvidas técnicas mais complexas, estou passando para o time de tecnologia da Smiller. Eles te retornam até [prazo concreto — ex.: o fim do dia / em até X horas]."</em>
                 </p>
             </div>
 
@@ -1291,6 +1319,7 @@
                     <li>Identifique o paciente pelo nome completo (nunca peça Case ID)</li>
                     <li>Seja empático e profissional</li>
                     <li>Não prometa prazos que não pode cumprir</li>
+                    <li><strong>Seja sempre o mais claro e específico possível — nunca responda de forma vaga.</strong> Se você consegue calcular a data na SUSE, dê a data ("entrega prevista para 12/04"). Se não consegue, dê o prazo concreto ("7 dias úteis + frete da sua região") e diga quando vai confirmar a data exata. Nunca escreva "em breve". Se você não souber a resposta, pergunte à supervisora/gerente antes de responder.</li>
                     <li>Se não sabe, escale para o time apropriado</li>
                     <li>Revise antes de enviar (sem erros de digitação)</li>
                     <li>Mantenha o tom consistente e alinhado com valores Smiller</li>
@@ -1329,7 +1358,7 @@
                     <li>✓ Citou o Case ID para contexto</li>
                     <li>✓ Informou o prazo claro (3 dias úteis)</li>
                     <li>✓ Garantiu comunicação futura</li>
-                    <li>✓ Ton amigável mas profissional</li>
+                    <li>✓ Tom amigável mas profissional</li>
                 </ul>
             </div>
 
@@ -1425,7 +1454,7 @@
                     <li>✓ Tomou ação imediata e comprometida</li>
                 </ul>
 
-                <p style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid var(--warning); border-radius: 4px;"><strong>⚠️ Próximo Passo:</strong> Escale para o time de Produção no Slack (#urgent) para rastrear o pedido específico e dar atualização rápida.</p>
+                <p style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid var(--warning); border-radius: 4px;"><strong>⚠️ Próximo Passo:</strong> Avise a Caroline e registre o problema em <strong>#cx-prod</strong> para rastrear o pedido específico com Produção e dar uma atualização rápida ao dentista.</p>
             </div>
 
             <div class="alert alert-success">
@@ -1616,18 +1645,18 @@
 
                     <!-- Pergunta 5 -->
                     <div class="question">
-                        <h4>5. O que fazer se uma placa quebra com menos de 10 dias de uso?</h4>
+                        <h4>5. Uma placa QUEBRA após 17 dias de uso. O que fazer?</h4>
                         <div class="option">
-                            <input type="radio" name="q5" value="correct" id="q5_a">
-                            <label for="q5_a">a) Cobrar a refabricação (R$ 35,90)</label>
+                            <input type="radio" name="q5" value="incorrect" id="q5_a">
+                            <label for="q5_a">a) Reenviar sem custo</label>
                         </div>
                         <div class="option">
-                            <input type="radio" name="q5" value="incorrect" id="q5_b">
-                            <label for="q5_b">b) Reenviar sem custo</label>
+                            <input type="radio" name="q5" value="correct" id="q5_b">
+                            <label for="q5_b">b) Cobrar refabricação (R$ 35,90)</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="q5" value="incorrect" id="q5_c">
-                            <label for="q5_c">c) Ignorar e deixar usar próxima placa</label>
+                            <label for="q5_c">c) Pedir novo escaneamento</label>
                         </div>
                     </div>
 
@@ -1650,18 +1679,18 @@
 
                     <!-- Pergunta 7 -->
                     <div class="question">
-                        <h4>7. Qual é o tempo de resposta esperado no Huggy para casos normais?</h4>
+                        <h4>7. Qual é o tempo esperado de primeira resposta no Huggy, em horário útil?</h4>
                         <div class="option">
-                            <input type="radio" name="q7" value="incorrect" id="q7_a">
-                            <label for="q7_a">a) 1 hora</label>
+                            <input type="radio" name="q7" value="correct" id="q7_a">
+                            <label for="q7_a">a) 15 minutos</label>
                         </div>
                         <div class="option">
-                            <input type="radio" name="q7" value="correct" id="q7_b">
-                            <label for="q7_b">b) Até 24h úteis</label>
+                            <input type="radio" name="q7" value="incorrect" id="q7_b">
+                            <label for="q7_b">b) Até 1 hora</label>
                         </div>
                         <div class="option">
                             <input type="radio" name="q7" value="incorrect" id="q7_c">
-                            <label for="q7_c">c) 48 horas</label>
+                            <label for="q7_c">c) Até 24h úteis</label>
                         </div>
                     </div>
 
@@ -1739,7 +1768,7 @@
                     </li>
                     <li>
                         <input type="checkbox" id="check9" onchange="atualizarProgresso()">
-                        <label for="check9"><strong>Dia 5:</strong> Revisar fluxo de tratamentos (Smiller + Athena)</label>
+                        <label for="check9"><strong>Dia 5:</strong> Revisar fluxo de tratamentos</label>
                     </li>
                 </ul>
             </div>
@@ -1795,22 +1824,22 @@
                     </li>
                     <li>
                         <input type="checkbox" id="check20" onchange="atualizarProgresso()">
-                        <label for="check20">Manter tempo de resposta de até 24h úteis consistentemente</label>
+                        <label for="check20">Manter tempo de primeira resposta de até 15 min (horário útil) consistentemente</label>
                     </li>
                 </ul>
             </div>
         </section>
 
-        <!-- SEÇÃO 10: ATHENA (INFORMAÇÕES ADICIONAIS) -->
+        <!-- SEÇÃO 10: FLUXO DO CASO -->
         <section id="athena">
             <div class="card">
-                <h2>Fluxo de Tratamentos: Smiller + Athena Saúde 🔄</h2>
-                <p>Este é o processo padrão de um caso do início ao fim, incluindo a integração com Athena:</p>
+                <h2>Fluxo Athena 🔄</h2>
+                <p>Este é o processo padrão de um caso do início ao fim:</p>
 
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h4>01 - Solicitação Planejamento</h4>
+                            <h4>01 - Solicitação de Planejamento</h4>
                             <p>Dentista solicita planejamento anexando exames (plataforma app.smiller.com.br)</p>
                         </div>
                     </div>
@@ -1823,30 +1852,30 @@
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <h4>03 - Planejamento</h4>
-                            <p><strong>Smiller realiza em 3 dias úteis</strong> o planejamento de acordo com orientações</p>
+                            <p><strong>Smiller realiza em 3 dias úteis</strong> o planejamento de acordo com as orientações</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h4>04 - Aprovação (A1)</h4>
-                            <p>Solicitação de planejamento é enviada para Athena Saúde para aprovação</p>
+                            <h4>04 - Revisão e Ajustes</h4>
+                            <p>Dentista revisa o planejamento na plataforma e solicita ajustes, caso necessário</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h4>05 - Ajustes</h4>
-                            <p>Dentista solicita ajustes caso necessário</p>
+                            <h4>05 - Aprovação</h4>
+                            <p>Dentista aprova o planejamento na plataforma</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h4>06 - Aprovação (A2)</h4>
-                            <p>Após ajustes, Smiller fabrica e entrega primeiras placas</p>
+                            <h4>06 - Solicitação de Fabricação</h4>
+                            <p>Após aprovação, o dentista solicita a fabricação das primeiras placas</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h4>07 - Solicitação Fabricação</h4>
+                            <h4>07 - Fabricação</h4>
                             <p><strong>7 dias úteis + frete</strong> para entrega</p>
                         </div>
                     </div>
@@ -1856,10 +1885,6 @@
                             <p>Confirmação de envio/despacho ao cliente</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="alert alert-info" style="margin-top: 20px;">
-                    <strong>💡 Sobre Athena:</strong> Athena Saúde é nosso parceiro de aprovação. Quando um planejamento é submetido, ele precisa passar pela aprovação deles (geralmente em 1-2 dias úteis) antes de entrar em fabricação. Se um cliente questiona este prazo, explique que fazemos nossa parte em 3 dias, mas Athena adiciona mais 1-2 dias na análise. Este é um processo importante para garantir qualidade.
                 </div>
             </div>
         </section>
